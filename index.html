@@ -2046,6 +2046,69 @@ img{
 }
 
 
+
+/* =========================================================
+   TWO-DOCTOR TEAM
+========================================================= */
+.doctor-team{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.doctor-profile{background:#fff;border:1px solid #e1eef7;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);transition:transform .35s ease,box-shadow .35s ease}
+.doctor-profile:hover{transform:translateY(-8px);box-shadow:var(--shadow2)}
+.doctor-profile-image{position:relative;height:500px;background:linear-gradient(145deg,#e5f7fa,#edf6ff);overflow:hidden}
+.doctor-profile-image img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.doctor-profile:hover .doctor-profile-image img{transform:scale(1.035)}
+.doctor-badge{position:absolute;left:20px;bottom:20px;padding:10px 14px;border-radius:999px;background:rgba(7,27,52,.72);backdrop-filter:blur(12px);color:#fff;font-size:12px;font-weight:800}
+.doctor-badge i{color:#79e1e0;margin-right:6px}
+.doctor-profile-content{padding:28px}
+.doctor-role{display:block;color:var(--teal);font-weight:800;font-size:13px;margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px}
+.doctor-profile-content h3{font:800 28px Manrope;margin-bottom:10px;letter-spacing:-.7px}
+.doctor-profile-content p{color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:18px}
+.doctor-tags{display:flex;gap:9px;flex-wrap:wrap}
+.doctor-tags span{padding:8px 11px;border-radius:999px;background:#f2f9fd;border:1px solid #dfedf6;color:#36536d;font-size:12px;font-weight:800}
+.doctor-tags i{color:var(--teal);margin-right:4px}
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+.philosophy{background:radial-gradient(circle at 0 20%,rgba(14,165,233,.08),transparent 28%),linear-gradient(180deg,#f5fbff,#fff)}
+.philosophy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.philosophy-card{background:#fff;border:1px solid #dfedf6;border-radius:24px;padding:30px;box-shadow:0 15px 45px rgba(8,48,91,.06);transition:transform .35s ease,box-shadow .35s ease}
+.philosophy-card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.philosophy-number{font:800 13px Manrope;color:#7aa2bf;margin-bottom:18px}
+.philosophy-icon{width:58px;height:58px;display:grid;place-items:center;border-radius:18px;background:#eaf7fb;color:var(--teal);font-size:23px;margin-bottom:20px}
+.philosophy-card h3{font:800 22px Manrope;margin-bottom:12px}
+.philosophy-card p{color:var(--muted);font-size:14px;line-height:1.9}
+.philosophy-card strong{color:#244766}
+
+/* =========================================================
+   OUR PATIENTS
+========================================================= */
+.patients{background:#fff}
+.patient-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.patient-photo{margin:0;height:390px;border-radius:24px;overflow:hidden;background:#eaf6fb;box-shadow:0 15px 40px rgba(8,48,91,.08);position:relative}
+.patient-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 65%,rgba(5,32,58,.18));pointer-events:none}
+.patient-photo img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.patient-photo:hover img{transform:scale(1.045)}
+
+/* =========================================================
+   BOOK APPOINTMENT
+========================================================= */
+.appointment{background:linear-gradient(145deg,#071b34,#0b527f);color:#fff}
+.appointment-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:45px;align-items:center}
+.appointment-copy h2{font:800 clamp(36px,4.5vw,58px) Manrope;line-height:1.08;letter-spacing:-2px;margin:18px 0 16px}
+.appointment-copy>p{color:#c9deee;font-size:16px;line-height:1.85;max-width:600px}
+.appointment-points{display:grid;gap:12px;margin-top:26px}
+.appointment-points span{color:#e2f1f8;font-weight:700;font-size:14px}
+.appointment-points i{color:#79e1e0;margin-right:8px}
+.appointment-form{background:rgba(255,255,255,.98);color:var(--ink);border-radius:28px;padding:30px;box-shadow:0 30px 80px rgba(0,0,0,.20)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.appointment-form label{display:block;font-size:13px;font-weight:800;color:#34516d;margin-bottom:16px}
+.appointment-form input,.appointment-form select,.appointment-form textarea{width:100%;margin-top:7px;border:1px solid #dceaf3;background:#f9fcfe;color:#17324d;border-radius:13px;padding:13px 14px;outline:none;font:500 14px "DM Sans",sans-serif;transition:border-color .25s,box-shadow .25s}
+.appointment-form textarea{resize:vertical}
+.appointment-form input:focus,.appointment-form select:focus,.appointment-form textarea:focus{border-color:#7ec9df;box-shadow:0 0 0 4px rgba(14,165,233,.08)}
+.appointment-form .btn{width:100%;margin-top:2px}
+.form-note{text-align:center;color:#8192a3;font-size:11px;margin-top:10px}
+.instagram-link i{color:#e1306c;font-size:17px;margin-right:5px}
+
 /* =========================================================
    RESPONSIVE
 ========================================================= */
@@ -2099,6 +2162,26 @@ img{
 
   .service-grid,
   .why-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .doctor-team,
+  .philosophy-grid,
+  .appointment-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .patient-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .doctor-team,
+  .philosophy-grid,
+  .appointment-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .patient-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
@@ -2293,8 +2376,30 @@ img{
   /* SERVICES */
 
   .service-grid,
-  .why-grid{
+  .why-grid,
+  .philosophy-grid{
     grid-template-columns:1fr;
+  }
+
+  .doctor-profile-image{
+    height:420px;
+  }
+
+  .patient-grid{
+    grid-template-columns:1fr;
+  }
+
+  .patient-photo{
+    height:360px;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .appointment-form{
+    padding:22px;
   }
 
 
@@ -2488,7 +2593,7 @@ img{
 
       <span>
         <i class="fa-solid fa-location-dot"></i>
-        Shiv Colony, Nagaur, Rajasthan
+        Near Sanjivni Hospital, Vijay Vallabh Circle, Didwana Road, Nagaur, Rajasthan
       </span>
 
     </div>
@@ -2534,41 +2639,13 @@ img{
 
       <ul>
 
-        <li>
-          <a href="#home" class="active">
-            Home
-          </a>
-        </li>
-
-        <li>
-          <a href="#doctor">
-            Doctor
-          </a>
-        </li>
-
-        <li>
-          <a href="#services">
-            Treatments
-          </a>
-        </li>
-
-        <li>
-          <a href="#gallery">
-            Gallery
-          </a>
-        </li>
-
-        <li>
-          <a href="#reviews">
-            Reviews
-          </a>
-        </li>
-
-        <li>
-          <a href="#contact" class="nav-cta">
-            Contact Us
-          </a>
-        </li>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#doctor">Doctors</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#philosophy">Philosophy</a></li>
+        <li><a href="#patients">Our Patients</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#appointment" class="nav-cta">Book Appointment</a></li>
 
       </ul>
 
@@ -2688,7 +2765,7 @@ img{
 
           <i class="fa-regular fa-calendar-check"></i>
 
-          Book / Contact
+          Book Appointment
 
         </a>
 
@@ -3034,116 +3111,126 @@ img{
 
 
 <!-- =======================================================
-     DOCTOR
-     d.jpeg
+     DOCTORS
 ======================================================== -->
 
 <section class="doctor" id="doctor">
 
-  <div class="container doctor-grid">
+  <div class="container">
 
+    <div class="section-head reveal">
+      <span class="eyebrow">Meet Our Doctors</span>
+      <h2>Expert Care, Personal Attention</h2>
+      <p>
+        Two dedicated dental professionals bringing clinical expertise,
+        precision and patient-focused care to every smile.
+      </p>
+    </div>
 
-    <div class="doctor-visual reveal left">
+    <div class="doctor-team">
 
-      <div class="doctor-frame">
-
-        <div class="doctor-card-art">
-
-          <img
-            src="d.jpeg"
-            alt="Dr. Rishik Dental Care"
-          >
-
+      <article class="doctor-profile reveal left" data-magnetic>
+        <div class="doctor-profile-image">
+          <img src="d.jpeg" alt="Dr. Rishik Choudhary">
+          <span class="doctor-badge"><i class="fa-solid fa-user-doctor"></i> Dental Care</span>
         </div>
-
-      </div>
-
-
-      <div class="doctor-note">
-
-        <div class="icon">
-
-          <i class="fa-solid fa-user-doctor"></i>
-
+        <div class="doctor-profile-content">
+          <span class="doctor-role">BDS · Implantologist</span>
+          <h3>Dr. Rishik Choudhary</h3>
+          <p>
+            Focused on precise, comfortable and comprehensive dental care,
+            with special expertise in implant dentistry.
+          </p>
+          <div class="doctor-tags">
+            <span><i class="fa-solid fa-circle-check"></i> BDS</span>
+            <span><i class="fa-solid fa-circle-check"></i> Implantologist</span>
+          </div>
         </div>
+      </article>
 
-        <div>
-
-          <strong>
-            Professional Dental Surgeon
-          </strong>
-
-          <span>
-            Patient-first care
-          </span>
-
+      <article class="doctor-profile reveal right" data-magnetic>
+        <div class="doctor-profile-image">
+          <img src="d1.jpeg" alt="Dr. Samayra Mahiya">
+          <span class="doctor-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Aesthetic Care</span>
         </div>
-
-      </div>
+        <div class="doctor-profile-content">
+          <span class="doctor-role">BDS · Cosmetologist</span>
+          <h3>Dr. Samayra Mahiya</h3>
+          <p>
+            Dedicated to aesthetic and cosmetic dentistry, creating natural,
+            balanced and confident smiles with an artistic approach.
+          </p>
+          <div class="doctor-tags">
+            <span><i class="fa-solid fa-circle-check"></i> BDS</span>
+            <span><i class="fa-solid fa-circle-check"></i> Cosmetologist</span>
+          </div>
+        </div>
+      </article>
 
     </div>
 
+  </div>
 
-    <div class="doctor-copy reveal right">
+</section>
 
-      <span class="eyebrow">
-        Meet Your Dentist
-      </span>
 
-      <h2>
-        Dr. Rishik
-      </h2>
+<!-- =======================================================
+     OUR PHILOSOPHY
+======================================================== -->
 
-      <h4>
-        Professional Dental Surgeon
-      </h4>
+<section class="philosophy" id="philosophy">
 
+  <div class="container">
+
+    <div class="section-head reveal">
+      <span class="eyebrow">Our Philosophy</span>
+      <h2>Precision Takes Time. Your Care Deserves It.</h2>
       <p>
-
-        Dr. Rishik Dental Care is committed
-        to providing advanced dental treatments
-        with a focus on patient comfort, hygiene
-        and long-term oral health. Using modern
-        equipment and a caring approach, every
-        patient receives personalized treatment
-        for a healthy and confident smile.
-
+        At Dr. Rishik Dental Care, every appointment is planned around
+        the attention, precision and time your treatment deserves.
       </p>
+    </div>
 
+    <div class="philosophy-grid">
 
-      <div class="point-grid">
+      <article class="philosophy-card reveal left" data-magnetic>
+        <div class="philosophy-number">01</div>
+        <div class="philosophy-icon"><i class="fa-regular fa-calendar-check"></i></div>
+        <h3>Dedicated Time for You</h3>
+        <p>
+          We follow a <strong>Block Scheduling approach</strong>, which means
+          your appointment time is dedicated exclusively to you. The dentist
+          focuses solely on your care, ensuring that you receive the full
+          attention, time and expertise needed to achieve excellent results.
+        </p>
+      </article>
 
-        <div class="point">
-          <i class="fa-solid fa-circle-check"></i>
-          Root Canal Treatment
-        </div>
+      <article class="philosophy-card reveal" data-magnetic>
+        <div class="philosophy-number">02</div>
+        <div class="philosophy-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+        <h3>No-Rush Dentistry</h3>
+        <p>
+          Achieving precision in dental care requires commitment, focus and
+          time. This is why <strong>Dr. Rishik Dental Care</strong> embraces a
+          <strong>No-Rush Dentistry</strong> philosophy. Simple procedures can
+          be performed efficiently, while complex cases involving multiple
+          stages, healing time or detailed planning receive the patience and
+          precision they require.
+        </p>
+      </article>
 
-        <div class="point">
-          <i class="fa-solid fa-circle-check"></i>
-          Smile Designing
-        </div>
-
-        <div class="point">
-          <i class="fa-solid fa-circle-check"></i>
-          Teeth Cleaning
-        </div>
-
-        <div class="point">
-          <i class="fa-solid fa-circle-check"></i>
-          Tooth Extraction
-        </div>
-
-        <div class="point">
-          <i class="fa-solid fa-circle-check"></i>
-          Cosmetic Dentistry
-        </div>
-
-        <div class="point">
-          <i class="fa-solid fa-circle-check"></i>
-          Preventive Dental Care
-        </div>
-
-      </div>
+      <article class="philosophy-card reveal right" data-magnetic>
+        <div class="philosophy-number">03</div>
+        <div class="philosophy-icon"><i class="fa-solid fa-gem"></i></div>
+        <h3>Precision & Artistry</h3>
+        <p>
+          When it comes to dental aesthetics and crafting natural-looking
+          teeth and smiles, <strong>Precision</strong> and <strong>Artistry</strong>
+          demand time, concentration and attention to detail. We dedicate
+          ample time for every patient to deliver the best possible care
+          and outcomes.
+        </p>
+      </article>
 
     </div>
 
@@ -3156,160 +3243,72 @@ img{
      SERVICES
 ======================================================== -->
 
+<!-- =======================================================
+     SERVICES
+======================================================== -->
+
 <section class="services" id="services">
 
   <div class="container">
 
-
     <div class="section-head reveal">
-
-      <span class="eyebrow">
-        Our Treatments
-      </span>
-
-      <h2>
-        Complete Dental Care Under One Roof
-      </h2>
-
+      <span class="eyebrow">Our Services</span>
+      <h2>Comprehensive Dental Care</h2>
       <p>
-        Modern technology, quality treatment
-        and compassionate care for every patient.
+        Advanced dental treatments designed around precision,
+        comfort, aesthetics and long-term oral health.
       </p>
-
     </div>
-
 
     <div class="service-grid">
 
-
-      <article
-        class="service reveal"
-        data-magnetic
-      >
-
-        <div class="service-icon">
-          <i class="fa-solid fa-tooth"></i>
-        </div>
-
-        <h3>
-          Root Canal Treatment
-        </h3>
-
-        <p>
-          Advanced painless root canal treatment
-          to save infected teeth and restore
-          their natural function.
-        </p>
-
+      <article class="service reveal" data-magnetic>
+        <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
+        <h3>Dental Implants</h3>
+        <p>Modern implant solutions designed to restore function, comfort and a natural-looking smile.</p>
       </article>
 
-
-      <article
-        class="service reveal"
-        data-magnetic
-      >
-
-        <div class="service-icon">
-          <i class="fa-solid fa-sparkles"></i>
-        </div>
-
-        <h3>
-          Teeth Whitening
-        </h3>
-
-        <p>
-          Professional teeth whitening treatment
-          for a brighter, healthier and more
-          confident smile.
-        </p>
-
+      <article class="service reveal" data-magnetic>
+        <div class="service-icon"><i class="fa-solid fa-teeth"></i></div>
+        <h3>Prosthodontics</h3>
+        <p>Crowns, bridges, dentures, overdentures and implant-supported restorations for complete dental rehabilitation.</p>
       </article>
 
-
-      <article
-        class="service reveal"
-        data-magnetic
-      >
-
-        <div class="service-icon">
-          <i class="fa-solid fa-face-smile"></i>
-        </div>
-
-        <h3>
-          Smile Designing
-        </h3>
-
-        <p>
-          Customized cosmetic dental treatments
-          to improve your smile and facial
-          appearance.
-        </p>
-
+      <article class="service reveal" data-magnetic>
+        <div class="service-icon"><i class="fa-solid fa-arrows-to-circle"></i></div>
+        <h3>Oral Rehabilitation</h3>
+        <p>Full-mouth restorations planned with detailed attention to function, aesthetics and long-term oral health.</p>
       </article>
 
-
-      <article
-        class="service reveal"
-        data-magnetic
-      >
-
-        <div class="service-icon">
-          <i class="fa-solid fa-teeth"></i>
-        </div>
-
-        <h3>
-          Dental Filling
-        </h3>
-
-        <p>
-          Natural looking tooth-colored fillings
-          for strong, durable and healthy teeth.
-        </p>
-
+      <article class="service reveal" data-magnetic>
+        <div class="service-icon"><i class="fa-solid fa-head-side-virus"></i></div>
+        <h3>Orofacial Pain / TMJ Disorders</h3>
+        <p>Assessment and treatment focused on jaw, facial and TMJ-related pain and dysfunction.</p>
       </article>
 
-
-      <article
-        class="service reveal"
-        data-magnetic
-      >
-
-        <div class="service-icon">
-          <i class="fa-solid fa-shield-heart"></i>
-        </div>
-
-        <h3>
-          Preventive Dentistry
-        </h3>
-
-        <p>
-          Routine dental checkups and oral care
-          to keep your teeth and gums healthy.
-        </p>
-
+      <article class="service reveal" data-magnetic>
+        <div class="service-icon"><i class="fa-solid fa-face-smile-beam"></i></div>
+        <h3>Cosmetic & Aesthetic Dentistry</h3>
+        <p>Porcelain and composite veneers, smile design and aesthetic treatments for natural-looking smiles.</p>
       </article>
 
-
-      <article
-        class="service reveal"
-        data-magnetic
-      >
-
-        <div class="service-icon">
-          <i class="fa-solid fa-syringe"></i>
-        </div>
-
-        <h3>
-          Tooth Extraction
-        </h3>
-
-        <p>
-          Comfortable and safe tooth extraction
-          using modern painless techniques.
-        </p>
-
+      <article class="service reveal" data-magnetic>
+        <div class="service-icon"><i class="fa-solid fa-sparkles"></i></div>
+        <h3>Teeth Whitening</h3>
+        <p>Professional whitening treatment to brighten your smile while keeping your care comfortable and precise.</p>
       </article>
 
+      <article class="service reveal" data-magnetic>
+        <div class="service-icon"><i class="fa-solid fa-fill-drip"></i></div>
+        <h3>Composite Restorations</h3>
+        <p>Tooth-coloured fillings designed to restore damaged teeth with a natural appearance.</p>
+      </article>
+
+      <article class="service reveal" data-magnetic>
+        <div class="service-icon"><i class="fa-solid fa-tooth"></i></div>
+        <h3>Root Canal Therapy</h3>
+        <p>Careful root canal therapy focused on saving natural teeth and restoring comfortable function.</p>
+      </article>
 
     </div>
 
@@ -3736,6 +3735,50 @@ img{
 
 
 <!-- =======================================================
+     OUR PATIENTS
+======================================================== -->
+
+<section class="patients" id="patients">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+      <span class="eyebrow">Our Patients</span>
+      <h2>Smiles That Speak for Themselves</h2>
+      <p>
+        A glimpse into the patient experience at Dr. Rishik Dental Care.
+      </p>
+    </div>
+
+    <div class="patient-grid">
+
+      <figure class="patient-photo reveal scale" data-magnetic>
+        <img src="t1.jpeg" alt="Dr. Rishik Dental Care patient 1">
+      </figure>
+      <figure class="patient-photo reveal scale" data-magnetic>
+        <img src="t2.jpeg" alt="Dr. Rishik Dental Care patient 2">
+      </figure>
+      <figure class="patient-photo reveal scale" data-magnetic>
+        <img src="t3.jpeg" alt="Dr. Rishik Dental Care patient 3">
+      </figure>
+      <figure class="patient-photo reveal scale" data-magnetic>
+        <img src="t4.jpeg" alt="Dr. Rishik Dental Care patient 4">
+      </figure>
+      <figure class="patient-photo reveal scale" data-magnetic>
+        <img src="t5.jpeg" alt="Dr. Rishik Dental Care patient 5">
+      </figure>
+      <figure class="patient-photo reveal scale" data-magnetic>
+        <img src="t6.jpeg" alt="Dr. Rishik Dental Care patient 6">
+      </figure>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
      REVIEWS
 ======================================================== -->
 
@@ -4051,6 +4094,90 @@ img{
 
 
 <!-- =======================================================
+     BOOK APPOINTMENT
+======================================================== -->
+
+<section class="appointment" id="appointment">
+
+  <div class="container">
+
+    <div class="appointment-wrap">
+
+      <div class="appointment-copy reveal left">
+        <span class="eyebrow">Book Appointment</span>
+        <h2>Give Your Smile the Time It Deserves.</h2>
+        <p>
+          Share your details and preferred treatment. Our team can connect
+          with you to confirm your appointment and guide you further.
+        </p>
+
+        <div class="appointment-points">
+          <span><i class="fa-solid fa-circle-check"></i> Dedicated consultation</span>
+          <span><i class="fa-solid fa-circle-check"></i> Patient-focused care</span>
+          <span><i class="fa-solid fa-circle-check"></i> Modern dental treatment</span>
+        </div>
+      </div>
+
+      <form class="appointment-form reveal right" id="appointmentForm">
+
+        <div class="form-row">
+          <label>
+            Your Name
+            <input type="text" name="name" placeholder="Enter your name" required>
+          </label>
+
+          <label>
+            Phone Number
+            <input type="tel" name="phone" placeholder="Enter phone number" required>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>
+            Treatment
+            <select name="treatment" required>
+              <option value="">Select treatment</option>
+              <option>Dental Implants</option>
+              <option>Prosthodontics</option>
+              <option>Oral Rehabilitation</option>
+              <option>Orofacial Pain / TMJ Disorders Treatment</option>
+              <option>Cosmetic & Aesthetic Dentistry</option>
+              <option>Teeth Whitening</option>
+              <option>Composite Restorations (Fillings)</option>
+              <option>Root Canal Therapy</option>
+            </select>
+          </label>
+
+          <label>
+            Preferred Date
+            <input type="date" name="date">
+          </label>
+        </div>
+
+        <label>
+          Message
+          <textarea name="message" rows="4" placeholder="Tell us briefly about your dental concern"></textarea>
+        </label>
+
+        <button type="submit" class="btn btn-primary magnetic" data-magnetic>
+          <i class="fa-brands fa-whatsapp"></i>
+          Request Appointment
+        </button>
+
+        <p class="form-note">
+          Your request will open WhatsApp with your appointment details.
+        </p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
      CONTACT
 ======================================================== -->
 
@@ -4120,8 +4247,8 @@ img{
             </strong>
 
             <span>
-              Shiv Colony, Nagaur - 341001,
-              Rajasthan
+              Near Sanjivni Hospital, Vijay Vallabh Circle,<br>
+              Didwana Road, Nagaur, Rajasthan
             </span>
 
           </div>
@@ -4320,7 +4447,7 @@ img{
             fill="#0e55a8"
             font-weight="700"
           >
-            SHIV COLONY
+            VIJAY VALLABH CIRCLE
           </text>
 
           <text
@@ -4330,7 +4457,7 @@ img{
             font-size="11"
             fill="#6a7f94"
           >
-            NAGAUR · RAJASTHAN
+            DIDWANA ROAD · NAGAUR
           </text>
 
         </svg>
@@ -4390,28 +4517,19 @@ img{
 
       <div class="footer-links">
 
-        <a href="#home">
-          Home
-        </a>
+        <a href="#home">Home</a>
+        <a href="#doctor">Doctors</a>
+        <a href="#services">Services</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#patients">Our Patients</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#appointment">Book Appointment</a>
+        <a href="#contact">Contact</a>
 
-        <a href="#doctor">
-          Doctor
-        </a>
-
-        <a href="#services">
-          Treatments
-        </a>
-
-        <a href="#gallery">
-          Gallery
-        </a>
-
-        <a href="#reviews">
-          Reviews
-        </a>
-
-        <a href="#contact">
-          Contact
+        <!-- Replace # with the clinic's exact Instagram profile URL -->
+        <a href="#" class="instagram-link" aria-label="Instagram" title="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+          Instagram
         </a>
 
       </div>
@@ -4433,7 +4551,7 @@ img{
 
 
       <span>
-        Shiv Colony, Nagaur, Rajasthan
+        Near Sanjivni Hospital, Vijay Vallabh Circle, Didwana Road, Nagaur, Rajasthan
       </span>
 
     </div>
@@ -5155,6 +5273,36 @@ galleryNext?.addEventListener(
 /* INITIAL */
 
 showGallery(0);
+
+
+/* =========================================================
+   APPOINTMENT → WHATSAPP
+========================================================= */
+const appointmentForm = $("#appointmentForm");
+appointmentForm?.addEventListener("submit", event => {
+  event.preventDefault();
+  const formData = new FormData(appointmentForm);
+  const name = formData.get("name") || "";
+  const phone = formData.get("phone") || "";
+  const treatment = formData.get("treatment") || "Not specified";
+  const date = formData.get("date") || "Not specified";
+  const message = formData.get("message") || "No additional message";
+  const whatsappText =
+`Hello Dr. Rishik Dental Care,
+
+I would like to book an appointment.
+
+Name: ${name}
+Phone: ${phone}
+Treatment: ${treatment}
+Preferred Date: ${date}
+Message: ${message}`;
+  window.open(
+    `https://wa.me/917014726428?text=${encodeURIComponent(whatsappText)}`,
+    "_blank",
+    "noopener"
+  );
+});
 
 
 /* =========================================================
