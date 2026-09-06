@@ -13,9 +13,14 @@
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
 <style>
+
+/* =========================================================
+   ROOT / RESET
+========================================================= */
 
 :root{
   --blue:#0e55a8;
@@ -28,8 +33,10 @@
   --pale2:#e9f7fb;
   --white:#fff;
   --line:rgba(14,85,168,.12);
+
   --shadow:0 20px 55px rgba(8,48,91,.11);
   --shadow2:0 30px 90px rgba(8,48,91,.16);
+
   --radius:26px;
 }
 
@@ -65,14 +72,14 @@ button{
   font:inherit;
 }
 
-.container{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
 img{
   max-width:100%;
   display:block;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
 }
 
 section{
@@ -87,9 +94,10 @@ section{
 }
 
 
-/* =========================
+/* =========================================================
    LOADER
-========================= */
+   KEPT AS EXISTING DESIGN
+========================================================= */
 
 .loader{
   position:fixed;
@@ -136,9 +144,9 @@ section{
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* =========================================================
+   TOP BAR
+========================================================= */
 
 .topbar{
   height:42px;
@@ -167,11 +175,16 @@ section{
   margin-right:7px;
 }
 
+
+/* =========================================================
+   HEADER / NAVBAR
+========================================================= */
+
 header{
   position:sticky;
   top:0;
   z-index:1000;
-  background:rgba(255,255,255,.94);
+  background:rgba(255,255,255,.92);
   backdrop-filter:blur(18px);
   border-bottom:1px solid rgba(14,85,168,.08);
   transition:.35s;
@@ -189,18 +202,17 @@ header.scrolled{
 }
 
 
-/* SMALLER LOGO */
+/* LOGO */
 
 .logo{
   display:flex;
   align-items:center;
-  height:100%;
+  flex-shrink:0;
 }
 
 .logo img{
-  width:132px;
-  max-width:132px;
-  height:62px;
+  width:150px;
+  height:58px;
   object-fit:contain;
 }
 
@@ -268,9 +280,9 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    GENERIC
-========================= */
+========================================================= */
 
 .eyebrow{
   display:inline-flex;
@@ -315,20 +327,22 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+   VIDEO BACKGROUND
+========================================================= */
 
 .hero{
   min-height:calc(100vh - 124px);
-  padding:70px 0 55px;
+  padding:0;
   position:relative;
-  background:#09274b;
   overflow:hidden;
+  background:#071d35;
+  color:#fff;
 }
 
 
-/* HERO VIDEO BACKGROUND */
+/* HERO VIDEO */
 
 .hero-video{
   position:absolute;
@@ -337,49 +351,70 @@ nav a.active:after{
   height:100%;
   object-fit:cover;
   z-index:0;
-  opacity:.96;
 }
 
 
-/* VERY LIGHT OVERLAY
-   Video remains clearly visible */
+/* DARK / BLUE TRANSPARENT OVERLAY */
 
-.hero:before{
-  content:"";
+.hero-video-overlay{
   position:absolute;
   inset:0;
   z-index:1;
+
   background:
     linear-gradient(
       90deg,
-      rgba(5,27,52,.60) 0%,
-      rgba(5,27,52,.28) 42%,
-      rgba(5,27,52,.08) 72%,
-      rgba(5,27,52,.12) 100%
+      rgba(5,28,52,.88) 0%,
+      rgba(5,28,52,.70) 35%,
+      rgba(5,28,52,.38) 65%,
+      rgba(5,28,52,.20) 100%
     );
-  pointer-events:none;
 }
 
+
+/* subtle glass layer */
+
+.hero-video-glow{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 82% 45%,
+      rgba(14,165,233,.13),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 72% 75%,
+      rgba(16,156,159,.10),
+      transparent 30%
+    );
+}
+
+
+/* HERO CONTENT */
+
 .hero-grid{
-  display:grid;
-  grid-template-columns:1.02fr .98fr;
-  align-items:center;
-  gap:60px;
-  min-height:650px;
   position:relative;
   z-index:3;
+
+  display:grid;
+  grid-template-columns:1.02fr .98fr;
+
+  align-items:center;
+
+  gap:60px;
+
+  min-height:calc(100vh - 124px);
+
+  padding:70px 0 55px;
 }
 
 .hero-copy{
   position:relative;
   z-index:5;
-}
-
-.hero-copy .eyebrow{
-  background:rgba(255,255,255,.14);
-  border-color:rgba(255,255,255,.28);
-  color:#fff;
-  backdrop-filter:blur(12px);
 }
 
 .hero-copy h1{
@@ -392,16 +427,22 @@ nav a.active:after{
 }
 
 .hero-copy h1 .gradient{
-  background:linear-gradient(90deg,#61d7ff,#70ece5);
+  background:linear-gradient(
+    90deg,
+    #56cfff,
+    #6fe6d8
+  );
+
   -webkit-background-clip:text;
   background-clip:text;
+
   color:transparent;
 }
 
 .hero-copy .lead{
   font-size:18px;
   line-height:1.85;
-  color:rgba(255,255,255,.88);
+  color:rgba(255,255,255,.86);
   max-width:650px;
 }
 
@@ -412,42 +453,65 @@ nav a.active:after{
   margin:32px 0 35px;
 }
 
+
+/* BUTTONS */
+
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   gap:10px;
+
   border:0;
   cursor:pointer;
+
   border-radius:15px;
   padding:15px 22px;
+
   font-weight:800;
-  transition:transform .25s,box-shadow .25s,background .25s;
+
+  transition:
+    transform .25s,
+    box-shadow .25s,
+    background .25s;
 }
 
 .btn-primary{
-  background:linear-gradient(135deg,var(--blue),#087ed0);
+  background:linear-gradient(
+    135deg,
+    var(--blue),
+    #087ed0
+  );
+
   color:#fff;
-  box-shadow:0 16px 35px rgba(14,85,168,.23);
+
+  box-shadow:
+    0 16px 35px rgba(14,85,168,.30);
 }
 
 .btn-light{
-  background:rgba(255,255,255,.93);
+  background:rgba(255,255,255,.94);
   color:var(--blue);
-  border:1px solid rgba(255,255,255,.7);
-  box-shadow:0 10px 25px rgba(8,48,91,.12);
-  backdrop-filter:blur(10px);
+
+  border:1px solid rgba(255,255,255,.8);
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.12);
 }
 
 .btn:hover{
-  transform:translateY(-4px);
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.20);
 }
+
+
+/* HERO TRUST */
 
 .hero-trust{
   display:flex;
   align-items:center;
   gap:14px;
-  color:rgba(255,255,255,.88);
+  color:rgba(255,255,255,.82);
   font-size:14px;
 }
 
@@ -458,12 +522,23 @@ nav a.active:after{
 .avatar{
   width:35px;
   height:35px;
+
   border-radius:50%;
+
   border:3px solid rgba(255,255,255,.9);
-  background:linear-gradient(145deg,#d9f6fb,#8bcde8);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(217,246,251,.9),
+      rgba(139,205,232,.7)
+    );
+
   display:grid;
   place-items:center;
+
   margin-left:-9px;
+
   color:var(--blue);
   font-size:12px;
 }
@@ -478,48 +553,59 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    HERO RIGHT SIDE
-========================= */
+   TRANSPARENT TOOTH / GLASS EFFECT
+========================================================= */
 
 .hero-art{
   position:relative;
   min-height:610px;
+
   display:grid;
   place-items:center;
-  z-index:4;
+
+  isolation:isolate;
 }
 
 
-/* transparent orbit */
+/* circles are very subtle so video remains visible */
 
 .orbit{
   position:absolute;
+
   border:1px solid rgba(255,255,255,.20);
+
   border-radius:50%;
-  animation:orbit 18s linear infinite;
+
+  animation:
+    orbit 18s linear infinite;
+
   pointer-events:none;
 }
 
 .orbit.o1{
   width:560px;
   height:560px;
-  border-color:rgba(255,255,255,.16);
 }
 
 .orbit.o2{
   width:430px;
   height:430px;
+
   animation-duration:13s;
   animation-direction:reverse;
-  border-color:rgba(111,232,232,.20);
+
+  border-color:rgba(117,226,235,.24);
 }
 
 .orbit.o3{
   width:300px;
   height:300px;
+
   animation-duration:9s;
-  border-color:rgba(255,255,255,.13);
+
+  border-color:rgba(255,255,255,.16);
 }
 
 @keyframes orbit{
@@ -529,20 +615,65 @@ nav a.active:after{
 }
 
 
-/* tooth container */
+/* TOOTH CONTAINER */
 
 .dental-scene{
   width:min(510px,92%);
   aspect-ratio:1/1;
+
   position:relative;
-  filter:drop-shadow(0 30px 55px rgba(0,0,0,.16));
-  animation:float 5s ease-in-out infinite;
+
+  display:grid;
+  place-items:center;
+
+  animation:
+    dentalFloat 5s ease-in-out infinite;
+
+  filter:
+    drop-shadow(
+      0 35px 55px
+      rgba(0,0,0,.16)
+    );
 }
 
-@keyframes float{
-  50%{
-    transform:translateY(-10px);
+@keyframes dentalFloat{
+
+  0%,
+  100%{
+    transform:translateY(0);
   }
+
+  50%{
+    transform:translateY(-12px);
+  }
+}
+
+
+/* IMPORTANT:
+   tooth is now transparent / glass-like
+   so hero video remains visible
+*/
+
+.tooth-svg{
+  width:100%;
+  height:100%;
+
+  opacity:.23;
+
+  filter:
+    drop-shadow(
+      0 15px 25px
+      rgba(0,0,0,.12)
+    );
+
+  transition:
+    opacity .5s ease,
+    transform .6s ease;
+}
+
+.hero-art:hover .tooth-svg{
+  opacity:.30;
+  transform:scale(1.025);
 }
 
 
@@ -550,15 +681,34 @@ nav a.active:after{
 
 .scene-card{
   position:absolute;
-  background:rgba(255,255,255,.13);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border:1px solid rgba(255,255,255,.25);
+
+  background:
+    rgba(255,255,255,.13);
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  border:
+    1px solid
+    rgba(255,255,255,.28);
+
   border-radius:18px;
-  box-shadow:0 20px 45px rgba(0,0,0,.13);
+
+  box-shadow:
+    0 20px 45px
+    rgba(0,0,0,.16);
+
   padding:14px 16px;
-  z-index:8;
+
+  z-index:5;
+
   color:#fff;
+
+  animation:
+    cardFloat 4.5s ease-in-out infinite;
 }
 
 .scene-card strong{
@@ -567,8 +717,8 @@ nav a.active:after{
 }
 
 .scene-card strong i{
-  color:#77e5e5;
   margin-right:5px;
+  color:#82e6e5;
 }
 
 .scene-card span{
@@ -584,124 +734,102 @@ nav a.active:after{
 .scene-card.b{
   bottom:17%;
   right:-3%;
+
+  animation-delay:-1.5s;
+}
+
+@keyframes cardFloat{
+
+  0%,
+  100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-7px);
+  }
 }
 
 
-/* transparent badge */
+/* GLASS BADGE */
 
 .scene-badge{
   position:absolute;
+
   right:9%;
   top:8%;
+
   width:62px;
   height:62px;
+
   border-radius:20px;
-  background:rgba(16,156,159,.22);
-  border:1px solid rgba(255,255,255,.22);
-  backdrop-filter:blur(12px);
+
+  background:
+    rgba(16,156,159,.28);
+
+  backdrop-filter:blur(15px);
+
+  border:
+    1px solid
+    rgba(255,255,255,.25);
+
   color:#fff;
+
   display:grid;
   place-items:center;
+
   font-size:25px;
-  box-shadow:0 18px 35px rgba(0,0,0,.12);
-  z-index:9;
+
+  box-shadow:
+    0 18px 35px
+    rgba(0,0,0,.16);
+
+  z-index:6;
+
+  animation:
+    badgeFloat 4s ease-in-out infinite;
 }
 
+@keyframes badgeFloat{
 
-/* =========================
-   TRANSPARENT TOOTH
-========================= */
+  0%,
+  100%{
+    transform:translateY(0) rotate(0);
+  }
 
-.tooth-svg{
-  width:100%;
-  height:100%;
+  50%{
+    transform:translateY(-9px) rotate(3deg);
+  }
 }
-
-
-/* make the entire SVG more transparent */
-
-.tooth-svg circle[fill="url(#g2)"]{
-  opacity:.13!important;
-}
-
-.tooth-svg circle[fill="#fff"]{
-  fill:rgba(255,255,255,.06)!important;
-}
-
-.tooth-svg path[fill="#fff"]{
-  fill:rgba(255,255,255,.045)!important;
-}
-
-.tooth-svg path[stroke="url(#g1)"]{
-  stroke:url(#g1);
-  stroke-width:10;
-  opacity:.72;
-}
-
-.tooth-svg path[stroke="#b8dff1"]{
-  stroke:#b8dff1;
-  opacity:.45;
-}
-
-.tooth-svg path[stroke="#109c9f"]{
-  stroke:#6ee3df;
-  opacity:.68;
-}
-
-.tooth-svg circle[fill="#0e55a8"]{
-  fill:#72cfff!important;
-  opacity:.72;
-}
-
-.tooth-svg circle[fill="#109c9f"]{
-  fill:#6ee3df!important;
-  opacity:.55;
-}
-
-.tooth-svg path[stroke="#0e55a8"]{
-  stroke:#72cfff!important;
-  opacity:.25;
-}
-
-.tooth-svg circle[fill="#109c9f"][opacity=".12"]{
-  opacity:.10!important;
-}
-
-.tooth-svg path[stroke="#109c9f"][stroke-width="6"]{
-  opacity:.55;
-}
-
-
-/* remove heavy tooth shadow */
-
-.tooth-svg [filter="url(#shadow)"]{
-  filter:none;
-}
-
-
-/* hero bottom glow */
 
 .hero-mini{
   position:absolute;
+
   bottom:3%;
   left:50%;
+
   transform:translateX(-50%);
+
   width:180px;
   height:8px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(139,221,224,.65),
-    transparent
-  );
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(139,221,224,.55),
+      transparent
+    );
+
   border-radius:50%;
-  filter:blur(4px);
+
+  filter:blur(2px);
 }
 
 
-/* =========================
-   STAT STRIP
-========================= */
+/* =========================================================
+   STATS
+========================================================= */
 
 .stat-strip{
   padding:0 0 30px;
@@ -711,11 +839,21 @@ nav a.active:after{
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
+
   background:#fff;
+
   border:1px solid #e1eef7;
+
   box-shadow:var(--shadow);
+
   border-radius:24px;
+
   overflow:hidden;
+
+  position:relative;
+  z-index:5;
+
+  margin-top:-1px;
 }
 
 .stat{
@@ -726,11 +864,14 @@ nav a.active:after{
 
 .stat:not(:last-child):after{
   content:"";
+
   position:absolute;
   right:0;
   top:24px;
+
   width:1px;
   height:52px;
+
   background:#e5edf4;
 }
 
@@ -746,9 +887,10 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    DOCTOR
-========================= */
+   d.jpeg
+========================================================= */
 
 .doctor{
   background:#fff;
@@ -756,8 +898,11 @@ nav a.active:after{
 
 .doctor-grid{
   display:grid;
+
   grid-template-columns:.82fr 1.18fr;
+
   gap:80px;
+
   align-items:center;
 }
 
@@ -766,11 +911,29 @@ nav a.active:after{
 }
 
 .doctor-frame{
-  background:linear-gradient(145deg,#dff7fb,#eaf4ff);
+  background:
+    linear-gradient(
+      145deg,
+      #dff7fb,
+      #eaf4ff
+    );
+
   border-radius:34px;
+
   padding:20px;
+
   box-shadow:var(--shadow2);
+
   transform:rotate(-2deg);
+
+  transition:
+    transform .5s ease;
+}
+
+.doctor-frame:hover{
+  transform:
+    rotate(0deg)
+    translateY(-5px);
 }
 
 .doctor-card-art{
@@ -779,33 +942,79 @@ nav a.active:after{
   background:#fff;
 }
 
+.doctor-card-art img{
+  width:100%;
+  height:570px;
+
+  object-fit:cover;
+
+  transition:
+    transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.doctor-card-art:hover img{
+  transform:scale(1.035);
+}
+
 .doctor-note{
   position:absolute;
+
   right:-30px;
   bottom:25px;
-  background:#fff;
+
+  background:
+    rgba(255,255,255,.94);
+
+  backdrop-filter:blur(15px);
+
   padding:18px 20px;
+
   border-radius:18px;
+
   box-shadow:var(--shadow);
+
   display:flex;
+
   align-items:center;
+
   gap:12px;
+
+  animation:
+    cardFloat 5s ease-in-out infinite;
 }
 
 .doctor-note .icon{
   width:44px;
   height:44px;
+
   border-radius:13px;
+
   background:#e9f9f8;
+
   color:var(--teal);
+
   display:grid;
   place-items:center;
 }
 
+.doctor-note strong{
+  display:block;
+}
+
+.doctor-note span{
+  font-size:12px;
+  color:var(--muted);
+}
+
 .doctor-copy h2{
-  font:800 clamp(36px,4.2vw,54px) Manrope;
+  font:
+    800 clamp(36px,4.2vw,54px)
+    Manrope;
+
   letter-spacing:-2px;
+
   line-height:1.1;
+
   margin:18px 0 8px;
 }
 
@@ -830,12 +1039,27 @@ nav a.active:after{
 
 .point{
   background:#f8fcff;
+
   border:1px solid #e5f0f8;
+
   border-radius:14px;
+
   padding:13px 14px;
+
   font-weight:700;
+
   font-size:14px;
+
   color:#37536e;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.point:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 25px rgba(8,48,91,.08);
 }
 
 .point i{
@@ -844,12 +1068,17 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    SERVICES
-========================= */
+========================================================= */
 
 .services{
-  background:linear-gradient(180deg,#f7fcff,#eef9fc);
+  background:
+    linear-gradient(
+      180deg,
+      #f7fcff,
+      #eef9fc
+    );
 }
 
 .service-grid{
@@ -860,31 +1089,46 @@ nav a.active:after{
 
 .service{
   background:#fff;
+
   border:1px solid #e1eef7;
+
   border-radius:22px;
+
   padding:30px 26px;
-  box-shadow:0 12px 35px rgba(8,48,91,.06);
+
+  box-shadow:
+    0 12px 35px rgba(8,48,91,.06);
+
   position:relative;
   overflow:hidden;
-  transition:.35s;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
 }
 
 .service:before{
   content:"";
+
   position:absolute;
   inset:0;
-  background:radial-gradient(
-    circle at 90% 0,
-    rgba(14,165,233,.12),
-    transparent 35%
-  );
+
+  background:
+    radial-gradient(
+      circle at 90% 0,
+      rgba(14,165,233,.12),
+      transparent 35%
+    );
+
   opacity:0;
+
   transition:.35s;
 }
 
 .service:hover{
   transform:translateY(-10px);
-  box-shadow:0 28px 55px rgba(8,48,91,.12);
+  box-shadow:
+    0 28px 55px rgba(8,48,91,.12);
 }
 
 .service:hover:before{
@@ -894,19 +1138,35 @@ nav a.active:after{
 .service-icon{
   width:60px;
   height:60px;
+
   border-radius:18px;
+
   background:#eaf6ff;
+
   color:var(--blue);
+
   display:grid;
   place-items:center;
+
   font-size:25px;
+
   margin-bottom:22px;
+
   transition:.35s;
 }
 
 .service:hover .service-icon{
-  transform:rotate(-7deg) scale(1.08);
-  background:linear-gradient(135deg,var(--blue),var(--teal));
+  transform:
+    rotate(-7deg)
+    scale(1.08);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--teal)
+    );
+
   color:#fff;
 }
 
@@ -922,9 +1182,9 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    WHY
-========================= */
+========================================================= */
 
 .why{
   background:#fff;
@@ -938,16 +1198,28 @@ nav a.active:after{
 
 .why-card{
   padding:28px;
+
   background:#fff;
+
   border:1px solid #e3edf5;
+
   border-radius:22px;
-  box-shadow:0 12px 35px rgba(8,48,91,.055);
-  transition:.35s;
+
+  box-shadow:
+    0 12px 35px rgba(8,48,91,.055);
+
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
 }
 
 .why-card:hover{
   transform:translateY(-8px);
   border-color:#bfe2f4;
+
+  box-shadow:
+    0 25px 55px rgba(8,48,91,.10);
 }
 
 .why-num{
@@ -973,83 +1245,214 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    GALLERY
-========================= */
+   c1.jpeg - c6.jpeg
+   ONE IMAGE AT A TIME
+   MANUAL SLIDER
+========================================================= */
 
 .gallery{
   background:#f3fbfe;
 }
 
-.gallery-grid{
-  display:grid;
-  grid-template-columns:1.2fr .8fr .8fr;
-  grid-template-rows:230px 230px;
-  gap:18px;
-}
-
-.gallery-card{
+.gallery-slider{
   position:relative;
-  border-radius:24px;
+
+  width:min(1000px,100%);
+
+  margin:auto;
+
+  border-radius:28px;
+
   overflow:hidden;
+
   background:#dceff7;
-  box-shadow:var(--shadow);
-  min-height:0;
+
+  box-shadow:var(--shadow2);
 }
 
-.gallery-card.big{
-  grid-row:span 2;
+
+/* slide */
+
+.gallery-track{
+  display:flex;
+
+  width:100%;
+
+  transition:
+    transform .75s
+    cubic-bezier(.22,.61,.36,1);
 }
 
-.gallery-card.wide{
-  grid-column:span 2;
+.gallery-slide{
+  min-width:100%;
+
+  position:relative;
+
+  height:560px;
+
+  overflow:hidden;
+
+  background:#dceff7;
 }
 
-.gallery-card svg{
+.gallery-slide img{
   width:100%;
   height:100%;
+
+  object-fit:cover;
+
   display:block;
-  transition:.65s;
+
+  transition:
+    transform 1s
+    cubic-bezier(.2,.8,.2,1);
 }
 
-.gallery-card:after{
+.gallery-slide.active img{
+  transform:scale(1.015);
+}
+
+
+/* dark bottom gradient */
+
+.gallery-slide:after{
   content:"";
+
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    180deg,
-    transparent 45%,
-    rgba(5,32,58,.76)
-  );
-  opacity:.7;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 50%,
+      rgba(5,32,58,.78)
+    );
+
+  pointer-events:none;
 }
 
-.gallery-card:hover svg{
-  transform:scale(1.06);
-}
 
-.gallery-label{
+/* caption */
+
+.gallery-caption{
   position:absolute;
-  left:22px;
-  bottom:18px;
+
+  left:28px;
+  bottom:25px;
+
+  z-index:4;
+
   color:#fff;
-  z-index:2;
 }
 
-.gallery-label strong{
+.gallery-caption strong{
   display:block;
-  font:800 20px Manrope;
+
+  font:
+    800 24px
+    Manrope;
 }
 
-.gallery-label span{
-  font-size:12px;
-  opacity:.88;
+.gallery-caption span{
+  font-size:13px;
+  opacity:.9;
 }
 
 
-/* =========================
+/* manual arrows */
+
+.gallery-arrow{
+  position:absolute;
+
+  top:50%;
+
+  transform:
+    translateY(-50%);
+
+  z-index:8;
+
+  width:54px;
+  height:54px;
+
+  border-radius:50%;
+
+  border:
+    1px solid
+    rgba(255,255,255,.40);
+
+  background:
+    rgba(7,27,52,.38);
+
+  backdrop-filter:blur(14px);
+
+  color:#fff;
+
+  display:grid;
+  place-items:center;
+
+  cursor:pointer;
+
+  font-size:20px;
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+}
+
+.gallery-arrow:hover{
+  background:
+    rgba(14,85,168,.75);
+
+  transform:
+    translateY(-50%)
+    scale(1.08);
+}
+
+.gallery-arrow.prev{
+  left:20px;
+}
+
+.gallery-arrow.next{
+  right:20px;
+}
+
+
+/* gallery counter */
+
+.gallery-counter{
+  position:absolute;
+
+  right:25px;
+  bottom:24px;
+
+  z-index:5;
+
+  color:#fff;
+
+  font:
+    700 13px
+    Manrope;
+
+  background:
+    rgba(7,27,52,.42);
+
+  backdrop-filter:blur(12px);
+
+  border:
+    1px solid
+    rgba(255,255,255,.22);
+
+  padding:8px 12px;
+
+  border-radius:999px;
+}
+
+
+/* =========================================================
    REVIEWS
-========================= */
+========================================================= */
 
 .reviews{
   background:#fff;
@@ -1063,16 +1466,33 @@ nav a.active:after{
 
 .review{
   padding:30px;
+
   border:1px solid #e3edf5;
+
   border-radius:22px;
-  box-shadow:0 15px 40px rgba(8,48,91,.06);
+
+  box-shadow:
+    0 15px 40px rgba(8,48,91,.06);
+
   position:relative;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+.review:hover{
+  transform:translateY(-7px);
+
+  box-shadow:
+    0 25px 55px rgba(8,48,91,.10);
 }
 
 .quote{
   position:absolute;
   right:25px;
   top:22px;
+
   font-size:34px;
   color:#d9eff9;
 }
@@ -1098,11 +1518,21 @@ nav a.active:after{
 .reviewer-avatar{
   width:44px;
   height:44px;
+
   border-radius:50%;
-  background:linear-gradient(145deg,#e5f7fa,#cbe7ff);
+
+  background:
+    linear-gradient(
+      145deg,
+      #e5f7fa,
+      #cbe7ff
+    );
+
   display:grid;
   place-items:center;
+
   color:var(--blue);
+
   font-weight:800;
 }
 
@@ -1116,12 +1546,17 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    FAQ
-========================= */
+========================================================= */
 
 .faq{
-  background:linear-gradient(180deg,#f6fbff,#fff);
+  background:
+    linear-gradient(
+      180deg,
+      #f6fbff,
+      #fff
+    );
 }
 
 .faq-box{
@@ -1131,30 +1566,57 @@ nav a.active:after{
 
 .faq-item{
   border:1px solid #e1edf6;
+
   background:#fff;
+
   border-radius:18px;
+
   margin-bottom:12px;
+
   overflow:hidden;
-  box-shadow:0 8px 28px rgba(8,48,91,.045);
+
+  box-shadow:
+    0 8px 28px rgba(8,48,91,.045);
+
+  transition:
+    box-shadow .3s ease,
+    transform .3s ease;
+}
+
+.faq-item:hover{
+  box-shadow:
+    0 15px 35px rgba(8,48,91,.08);
 }
 
 .faq-q{
   width:100%;
+
   padding:21px 24px;
+
   border:0;
+
   background:transparent;
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   text-align:left;
+
   font-weight:800;
+
   color:#19334e;
+
   cursor:pointer;
 }
 
 .faq-q i{
   color:var(--blue);
-  transition:.3s;
+
+  transition:
+    transform .3s ease;
 }
 
 .faq-item.open .faq-q i{
@@ -1163,8 +1625,11 @@ nav a.active:after{
 
 .faq-a{
   display:grid;
+
   grid-template-rows:0fr;
-  transition:.35s;
+
+  transition:
+    grid-template-rows .35s ease;
 }
 
 .faq-a>div{
@@ -1173,7 +1638,9 @@ nav a.active:after{
 
 .faq-a p{
   padding:0 24px 21px;
+
   color:var(--muted);
+
   font-size:14px;
 }
 
@@ -1182,9 +1649,9 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    CONTACT
-========================= */
+========================================================= */
 
 .contact{
   background:#fff;
@@ -1192,34 +1659,55 @@ nav a.active:after{
 
 .contact-layout{
   display:grid;
+
   grid-template-columns:.85fr 1.15fr;
+
   gap:25px;
 }
 
 .contact-info{
-  background:linear-gradient(145deg,var(--navy),#0b527f);
+  background:
+    linear-gradient(
+      145deg,
+      var(--navy),
+      #0b527f
+    );
+
   color:#fff;
+
   border-radius:28px;
+
   padding:38px;
+
   position:relative;
+
   overflow:hidden;
 }
 
 .contact-info:before{
   content:"";
+
   position:absolute;
+
   width:280px;
   height:280px;
-  border:1px solid rgba(255,255,255,.13);
+
+  border:
+    1px solid
+    rgba(255,255,255,.13);
+
   border-radius:50%;
+
   right:-90px;
   top:-100px;
 }
 
 .contact-info h2{
-  font:800 34px Manrope;
+  font:
+    800 34px
+    Manrope;
+
   margin:18px 0 10px;
-  color:#fff;
 }
 
 .contact-info>p{
@@ -1236,11 +1724,17 @@ nav a.active:after{
 .contact-detail .ci{
   width:44px;
   height:44px;
+
   flex:0 0 44px;
+
   border-radius:13px;
-  background:rgba(255,255,255,.11);
+
+  background:
+    rgba(255,255,255,.11);
+
   display:grid;
   place-items:center;
+
   color:#79e1e0;
 }
 
@@ -1255,11 +1749,16 @@ nav a.active:after{
 
 .contact-visual{
   min-height:450px;
+
   border-radius:28px;
+
   background:#eff9fc;
+
   border:1px solid #dceff7;
+
   display:grid;
   place-items:center;
+
   overflow:hidden;
 }
 
@@ -1269,87 +1768,141 @@ nav a.active:after{
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+   SAME LOGO STYLE AS NAVBAR
+========================================================= */
 
 footer{
   background:#071b34;
   color:#fff;
+
   padding:60px 0 28px;
 }
 
 .footer-top{
   display:flex;
+
   justify-content:space-between;
+
   gap:30px;
+
   align-items:flex-start;
 }
 
+.footer-brand{
+  max-width:440px;
+}
 
-/* FOOTER LOGO */
+
+/* IMPORTANT:
+   same basic size family as navbar logo
+*/
 
 .footer-brand img{
-  width:145px;
-  max-width:145px;
-  height:60px;
+  width:150px;
+  height:58px;
+
   object-fit:contain;
+
   margin-bottom:18px;
-  filter:brightness(0) invert(1);
-  opacity:.96;
+
+  filter:none;
+
+  opacity:.98;
 }
 
 .footer-brand p{
   max-width:420px;
+
   color:#adc2d5;
+
   font-size:14px;
 }
 
 .footer-links{
   display:flex;
+
   gap:26px;
+
   flex-wrap:wrap;
+
   color:#c7d8e7;
+
   font-weight:700;
+
   font-size:14px;
+}
+
+.footer-links a{
+  transition:
+    color .25s ease,
+    transform .25s ease;
 }
 
 .footer-links a:hover{
   color:#79e1e0;
+  transform:translateY(-2px);
 }
 
 .copyright{
   margin-top:35px;
+
   padding-top:20px;
-  border-top:1px solid rgba(255,255,255,.12);
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.12);
+
   color:#91a9bd;
+
   font-size:13px;
+
   display:flex;
+
   justify-content:space-between;
+
   gap:20px;
 }
 
 
-/* =========================
-   FLOATING BUTTONS
-========================= */
+/* =========================================================
+   FLOATING CALL + WHATSAPP
+   SIMPLE RECOGNIZABLE ICONS
+========================================================= */
 
 .float-btn{
   position:fixed;
+
   z-index:1200;
+
   bottom:24px;
+
   width:54px;
   height:54px;
+
   border-radius:50%;
+
   display:grid;
   place-items:center;
+
   color:#fff;
-  box-shadow:0 14px 30px rgba(0,0,0,.2);
-  transition:.25s;
+
+  box-shadow:
+    0 14px 30px rgba(0,0,0,.20);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
 }
 
 .float-btn:hover{
-  transform:translateY(-5px) scale(1.05);
+  transform:
+    translateY(-5px)
+    scale(1.05);
+
+  box-shadow:
+    0 20px 38px rgba(0,0,0,.26);
 }
 
 .float-call{
@@ -1367,26 +1920,42 @@ footer{
 }
 
 
-/* SCROLL TOP */
+/* =========================================================
+   SCROLL TOP
+========================================================= */
 
 #scrollTop{
   position:fixed;
+
   z-index:1199;
+
   right:88px;
   bottom:24px;
+
   width:46px;
   height:46px;
+
   border-radius:50%;
+
   border:1px solid #dceaf4;
+
   background:#fff;
+
   color:var(--blue);
+
   display:grid;
   place-items:center;
-  box-shadow:0 10px 25px rgba(8,48,91,.12);
+
+  box-shadow:
+    0 10px 25px rgba(8,48,91,.12);
+
   cursor:pointer;
+
   opacity:0;
   visibility:hidden;
+
   transform:translateY(10px);
+
   transition:.3s;
 }
 
@@ -1397,28 +1966,37 @@ footer{
 }
 
 
-/* =========================
-   REVEALS + MAGNETIC
-========================= */
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
 .reveal{
   opacity:0;
-  transform:translateY(55px);
+
+  transform:
+    translateY(55px);
+
   transition:
-    opacity .9s cubic-bezier(.2,.8,.2,1),
-    transform .9s cubic-bezier(.2,.8,.2,1);
+    opacity .9s
+    cubic-bezier(.2,.8,.2,1),
+
+    transform .9s
+    cubic-bezier(.2,.8,.2,1);
 }
 
 .reveal.left{
-  transform:translateX(-55px);
+  transform:
+    translateX(-55px);
 }
 
 .reveal.right{
-  transform:translateX(55px);
+  transform:
+    translateX(55px);
 }
 
 .reveal.scale{
-  transform:scale(.9);
+  transform:
+    scale(.90);
 }
 
 .reveal.in{
@@ -1426,19 +2004,51 @@ footer{
   transform:none;
 }
 
+
+/* =========================================================
+   MAGNETIC
+========================================================= */
+
 [data-magnetic]{
   will-change:transform;
-  transition:transform .18s ease;
+
+  transition:
+    transform .18s ease;
 }
 
-[data-parallax]{
-  will-change:transform;
+
+/* =========================================================
+   IMAGE LOAD ANIMATION
+========================================================= */
+
+img{
+  opacity:1;
+}
+
+.gallery-slide img,
+.doctor-card-art img{
+  animation:
+    imageReveal .8s
+    cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes imageReveal{
+
+  from{
+    opacity:.55;
+    transform:scale(1.04);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 
 
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
 @media(max-width:1000px){
 
@@ -1446,6 +2056,14 @@ footer{
   .doctor-grid,
   .contact-layout{
     grid-template-columns:1fr;
+  }
+
+  .hero{
+    min-height:auto;
+  }
+
+  .hero-grid{
+    min-height:auto;
   }
 
   .hero-copy{
@@ -1484,19 +2102,6 @@ footer{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .gallery-grid{
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:260px 220px 220px;
-  }
-
-  .gallery-card.big{
-    grid-row:span 2;
-  }
-
-  .gallery-card.wide{
-    grid-column:span 2;
-  }
-
   .review-grid{
     grid-template-columns:1fr;
   }
@@ -1506,8 +2111,16 @@ footer{
     margin:auto;
     width:100%;
   }
+
+  .gallery-slide{
+    height:500px;
+  }
 }
 
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
 
 @media(max-width:760px){
 
@@ -1520,8 +2133,7 @@ footer{
   }
 
   .logo img{
-    width:115px;
-    max-width:115px;
+    width:130px;
     height:52px;
   }
 
@@ -1532,17 +2144,29 @@ footer{
 
   nav{
     position:absolute;
+
     left:4%;
     right:4%;
+
     top:77px;
+
     background:#fff;
-    border:1px solid #e1edf5;
+
+    border:
+      1px solid
+      #e1edf5;
+
     border-radius:18px;
+
     box-shadow:var(--shadow);
+
     padding:10px;
+
     opacity:0;
     visibility:hidden;
+
     transform:translateY(-8px);
+
     transition:.3s;
   }
 
@@ -1575,21 +2199,29 @@ footer{
     margin-top:4px;
   }
 
+
+  /* HERO */
+
   section{
     padding:78px 0;
   }
 
   .hero{
     min-height:auto;
-    padding-top:48px;
   }
 
   .hero-grid{
-    min-height:auto;
+    padding-top:55px;
+    padding-bottom:40px;
   }
 
   .hero-copy h1{
+    font-size:48px;
     letter-spacing:-2.7px;
+  }
+
+  .hero-copy .lead{
+    font-size:16px;
   }
 
   .hero-art{
@@ -1611,13 +2243,20 @@ footer{
     height:220px;
   }
 
+  .scene-card{
+    transform:scale(.86);
+  }
+
   .scene-card.a{
-    left:0;
+    left:-5%;
   }
 
   .scene-card.b{
-    right:0;
+    right:-5%;
   }
+
+
+  /* STATS */
 
   .stats{
     grid-template-columns:1fr 1fr;
@@ -1635,46 +2274,87 @@ footer{
     font-size:24px;
   }
 
-  .service-grid,
-  .why-grid{
-    grid-template-columns:1fr;
-  }
 
-  .point-grid{
-    grid-template-columns:1fr;
+  /* DOCTOR */
+
+  .doctor-card-art img{
+    height:400px;
   }
 
   .doctor-note{
     right:5px;
   }
 
-  .gallery-grid{
+  .point-grid{
     grid-template-columns:1fr;
-    grid-template-rows:280px 220px 220px 220px;
   }
 
-  .gallery-card.big,
-  .gallery-card.wide{
-    grid-row:auto;
-    grid-column:auto;
+
+  /* SERVICES */
+
+  .service-grid,
+  .why-grid{
+    grid-template-columns:1fr;
   }
+
+
+  /* GALLERY */
+
+  .gallery-slider{
+    border-radius:20px;
+  }
+
+  .gallery-slide{
+    height:420px;
+  }
+
+  .gallery-arrow{
+    width:46px;
+    height:46px;
+  }
+
+  .gallery-arrow.prev{
+    left:12px;
+  }
+
+  .gallery-arrow.next{
+    right:12px;
+  }
+
+  .gallery-caption{
+    left:20px;
+    bottom:20px;
+  }
+
+  .gallery-caption strong{
+    font-size:20px;
+  }
+
+
+  /* CONTACT */
 
   .contact-visual{
     min-height:320px;
   }
 
+
+  /* FOOTER */
+
   .footer-top{
     flex-direction:column;
+  }
+
+  .footer-brand img{
+    width:130px;
+    height:52px;
   }
 
   .copyright{
     flex-direction:column;
   }
 
-  .footer-brand img{
-    width:130px;
-    max-width:130px;
-  }
+
+  /* FLOATING */
 
   #scrollTop{
     right:22px;
@@ -1684,18 +2364,87 @@ footer{
   .float-btn{
     bottom:20px;
   }
+
+  .float-call{
+    left:16px;
+  }
+
+  .float-wa{
+    right:16px;
+  }
 }
 
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+  .hero-copy h1{
+    font-size:42px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+  }
+
+  .hero-art{
+    min-height:340px;
+  }
+
+  .scene-card{
+    transform:scale(.72);
+  }
+
+  .scene-card.a{
+    left:-13%;
+  }
+
+  .scene-card.b{
+    right:-13%;
+  }
+
+  .scene-badge{
+    transform:scale(.78);
+  }
+
+  .gallery-slide{
+    height:350px;
+  }
+
+  .gallery-counter{
+    right:18px;
+    bottom:18px;
+  }
+
+  .gallery-caption{
+    max-width:70%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
   *,
   *::before,
   *::after{
+
     scroll-behavior:auto!important;
+
     animation-duration:.01ms!important;
+
     transition-duration:.01ms!important;
   }
+
 }
 
 </style>
@@ -1705,22 +2454,33 @@ footer{
 <body>
 
 
-<!-- LOADER -->
+<!-- =======================================================
+     LOADER
+======================================================== -->
 
 <div class="loader" id="loader">
+
   <div class="loader-core">
+
     <div class="loader-ring"></div>
+
     <i class="fa-solid fa-tooth loader-tooth"></i>
+
   </div>
+
 </div>
 
 
-<!-- TOP BAR -->
+<!-- =======================================================
+     TOP BAR
+======================================================== -->
 
 <div class="topbar">
+
   <div class="container">
 
     <div class="top-left">
+
       <span>
         <i class="fa-solid fa-phone"></i>
         +91 7014726428
@@ -1730,30 +2490,48 @@ footer{
         <i class="fa-solid fa-location-dot"></i>
         Shiv Colony, Nagaur, Rajasthan
       </span>
+
     </div>
 
     <div class="top-right">
+
       <span>
         <i class="fa-solid fa-clock"></i>
         Mon–Sun · 10:00 AM–7:00 PM
       </span>
+
     </div>
 
   </div>
+
 </div>
 
 
-<!-- HEADER -->
+<!-- =======================================================
+     HEADER
+======================================================== -->
 
 <header id="header">
 
   <div class="container nav">
 
+
+    <!-- REAL LOGO -->
+
     <a href="#home" class="logo">
-      <img src="logo.png" alt="Dr. Rishik Dental Care">
+
+      <img
+        src="logo.png"
+        alt="Dr. Rishik Dental Care"
+      >
+
     </a>
 
+
+    <!-- NAVIGATION -->
+
     <nav id="nav">
+
       <ul>
 
         <li>
@@ -1793,12 +2571,17 @@ footer{
         </li>
 
       </ul>
+
     </nav>
+
+
+    <!-- MOBILE MENU -->
 
     <button
       class="menu-btn"
       id="menuBtn"
-      aria-label="Open menu">
+      aria-label="Open menu"
+    >
 
       <i class="fa-solid fa-bars"></i>
 
@@ -1812,13 +2595,15 @@ footer{
 <main>
 
 
-<!-- =========================
+<!-- =======================================================
      HERO
-========================= -->
+     hero.mp4
+======================================================== -->
 
 <section class="hero" id="home">
 
-  <!-- HERO BACKGROUND VIDEO -->
+
+  <!-- VIDEO -->
 
   <video
     class="hero-video"
@@ -1826,65 +2611,93 @@ footer{
     muted
     loop
     playsinline
-    preload="auto">
+    preload="auto"
+  >
 
-    <source src="hero.mp4" type="video/mp4">
+    <source
+      src="hero.mp4"
+      type="video/mp4"
+    >
 
   </video>
+
+
+  <!-- VIDEO DARK GLASS OVERLAY -->
+
+  <div class="hero-video-overlay"></div>
+
+  <div class="hero-video-glow"></div>
 
 
   <div class="container hero-grid">
 
 
-    <!-- LEFT -->
+    <!-- LEFT CONTENT -->
 
     <div class="hero-copy reveal left">
 
-      <span class="eyebrow">
+      <span class="eyebrow hero-eyebrow">
+
         4.9 Rating · 48+ Happy Reviews
+
       </span>
 
+
       <h1>
-        Healthy Teeth.
-        <br>
+
+        Healthy Teeth.<br>
+
         <span class="gradient">
           Confident Smile.
         </span>
+
       </h1>
 
+
       <p class="lead">
+
         Dr. Rishik Dental Care provides trusted,
         painless and advanced dental care with
         modern technology and a patient-first
         approach for families across Nagaur.
+
       </p>
 
+
       <div class="hero-actions">
+
 
         <a
           href="tel:7014726428"
           class="btn btn-primary magnetic"
-          data-magnetic>
+          data-magnetic
+        >
 
           <i class="fa-solid fa-phone"></i>
+
           Call Now
 
         </a>
 
+
         <a
           href="#contact"
           class="btn btn-light magnetic"
-          data-magnetic>
+          data-magnetic
+        >
 
           <i class="fa-regular fa-calendar-check"></i>
+
           Book / Contact
 
         </a>
+
 
       </div>
 
 
       <div class="hero-trust">
+
 
         <div class="avatars">
 
@@ -1902,6 +2715,7 @@ footer{
 
         </div>
 
+
         <div>
 
           <div class="stars">
@@ -1914,32 +2728,39 @@ footer{
 
         </div>
 
+
       </div>
 
     </div>
 
 
-    <!-- RIGHT HERO -->
+    <!-- RIGHT HERO VISUAL -->
 
     <div
       class="hero-art reveal right"
-      data-parallax="0.08">
+      data-parallax="0.08"
+    >
 
 
-      <!-- TRANSPARENT ORBITS -->
+      <!-- SUBTLE ORBITS -->
 
       <div class="orbit o1"></div>
+
       <div class="orbit o2"></div>
+
       <div class="orbit o3"></div>
 
 
-      <!-- GLASS SAFE TREATMENT CARD -->
+      <!-- GLASS INFO CARD -->
 
       <div class="scene-card a">
 
         <strong>
+
           <i class="fa-solid fa-shield-heart"></i>
+
           Safe Treatment
+
         </strong>
 
         <span>
@@ -1949,13 +2770,16 @@ footer{
       </div>
 
 
-      <!-- GLASS MODERN DENTISTRY CARD -->
+      <!-- SECOND GLASS CARD -->
 
       <div class="scene-card b">
 
         <strong>
+
           <i class="fa-solid fa-tooth"></i>
+
           Modern Dentistry
+
         </strong>
 
         <span>
@@ -1965,14 +2789,16 @@ footer{
       </div>
 
 
-      <!-- TRANSPARENT BADGE -->
+      <!-- BADGE -->
 
       <div class="scene-badge">
+
         <i class="fa-solid fa-sparkles"></i>
+
       </div>
 
 
-      <!-- TOOTH -->
+      <!-- TRANSPARENT TOOTH -->
 
       <div class="dental-scene">
 
@@ -1980,7 +2806,8 @@ footer{
           class="tooth-svg"
           viewBox="0 0 520 520"
           role="img"
-          aria-label="Stylized dental care illustration">
+          aria-label="Stylized dental care illustration"
+        >
 
           <defs>
 
@@ -1989,10 +2816,17 @@ footer{
               x1="0"
               x2="1"
               y1="0"
-              y2="1">
+              y2="1"
+            >
 
-              <stop stop-color="#58cfff"/>
-              <stop offset="1" stop-color="#61ded8"/>
+              <stop
+                stop-color="#7ddff0"
+              />
+
+              <stop
+                offset="1"
+                stop-color="#70e2d5"
+              />
 
             </linearGradient>
 
@@ -2000,118 +2834,126 @@ footer{
             <linearGradient
               id="g2"
               x1="0"
-              x2="1">
+              x2="1"
+            >
 
-              <stop stop-color="#dff8fb"/>
-              <stop offset="1" stop-color="#e8f2ff"/>
+              <stop
+                stop-color="#ffffff"
+                stop-opacity=".20"
+              />
+
+              <stop
+                offset="1"
+                stop-color="#b9edf2"
+                stop-opacity=".12"
+              />
 
             </linearGradient>
-
-
-            <filter id="shadow">
-
-              <feDropShadow
-                dx="0"
-                dy="20"
-                stdDeviation="18"
-                flood-color="#0e55a8"
-                flood-opacity=".18"/>
-
-            </filter>
 
           </defs>
 
 
-          <!-- OUTER TRANSPARENT CIRCLE -->
+          <!-- transparent glass circles -->
 
           <circle
             cx="260"
             cy="260"
             r="202"
             fill="url(#g2)"
-            opacity=".13"/>
+            opacity=".32"
+          />
 
-
-          <!-- INNER GLASS CIRCLE -->
 
           <circle
             cx="260"
             cy="260"
             r="168"
-            fill="rgba(255,255,255,.05)"
-            stroke="rgba(255,255,255,.18)"
-            stroke-width="2"/>
+            fill="#ffffff"
+            fill-opacity=".08"
+            stroke="#ffffff"
+            stroke-opacity=".32"
+            stroke-width="2"
+          />
 
 
-          <!-- TOOTH BODY - TRANSPARENT -->
+          <!-- transparent tooth -->
 
           <path
             d="M188 120c-37 19-55 68-45 109 9 36 37 56 42 92 6 43 4 86 29 103 23 16 40-4 46-31 7-30 10-64 28-64s21 34 28 64c6 27 23 47 46 31 25-17 23-60 29-103 5-36 33-56 42-92 10-41-8-90-45-109-38-20-62 2-100 2s-62-22-100-2z"
-            fill="rgba(255,255,255,.045)"
+            fill="#ffffff"
+            fill-opacity=".10"
             stroke="url(#g1)"
-            stroke-width="10"
-            opacity=".72"/>
+            stroke-opacity=".65"
+            stroke-width="14"
+          />
 
 
-          <!-- SMILE / DETAIL -->
+          <!-- subtle face -->
 
           <path
             d="M214 210c24-23 69-23 92 0"
             fill="none"
-            stroke="#b8dff1"
+            stroke="#bdebf2"
+            stroke-opacity=".55"
             stroke-width="9"
             stroke-linecap="round"
-            opacity=".45"/>
+          />
 
 
           <path
             d="M231 270c19 13 40 13 59 0"
             fill="none"
-            stroke="#6ee3df"
+            stroke="#79dfd8"
+            stroke-opacity=".65"
             stroke-width="8"
             stroke-linecap="round"
-            opacity=".68"/>
+          />
 
 
           <circle
             cx="210"
             cy="239"
             r="7"
-            fill="#72cfff"
-            opacity=".72"/>
+            fill="#7bd9ed"
+            fill-opacity=".7"
+          />
 
           <circle
             cx="310"
             cy="239"
             r="7"
-            fill="#72cfff"
-            opacity=".72"/>
+            fill="#7bd9ed"
+            fill-opacity=".7"
+          />
 
 
           <path
             d="M135 375c31 38 75 60 125 60s94-22 125-60"
             fill="none"
-            stroke="#72cfff"
+            stroke="#ffffff"
+            stroke-opacity=".20"
             stroke-width="8"
             stroke-linecap="round"
-            opacity=".25"/>
+          />
 
 
-          <!-- TRANSPARENT PLUS -->
+          <!-- plus symbol -->
 
           <circle
             cx="391"
             cy="116"
             r="29"
             fill="#109c9f"
-            opacity=".10"/>
+            opacity=".18"
+          />
 
           <path
             d="M391 96v40M371 116h40"
-            stroke="#6ee3df"
+            stroke="#78e2dd"
+            stroke-opacity=".7"
             stroke-width="6"
             stroke-linecap="round"
-            opacity=".55"/>
+          />
 
         </svg>
 
@@ -2127,9 +2969,9 @@ footer{
 </section>
 
 
-<!-- =========================
-     STAT STRIP
-========================= -->
+<!-- =======================================================
+     STATS
+======================================================== -->
 
 <section class="stat-strip">
 
@@ -2191,9 +3033,10 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      DOCTOR
-========================= -->
+     d.jpeg
+======================================================== -->
 
 <section class="doctor" id="doctor">
 
@@ -2206,152 +3049,10 @@ footer{
 
         <div class="doctor-card-art">
 
-          <svg
-            viewBox="0 0 600 650"
-            role="img"
-            aria-label="Stylized dentist consultation illustration">
-
-            <defs>
-
-              <linearGradient
-                id="docbg"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1">
-
-                <stop stop-color="#e8f8fb"/>
-                <stop offset="1" stop-color="#dcecff"/>
-
-              </linearGradient>
-
-              <linearGradient
-                id="coat"
-                x1="0"
-                x2="1">
-
-                <stop stop-color="#fff"/>
-                <stop offset="1" stop-color="#eaf7ff"/>
-
-              </linearGradient>
-
-            </defs>
-
-
-            <rect
-              width="600"
-              height="650"
-              fill="url(#docbg)"/>
-
-
-            <circle
-              cx="465"
-              cy="120"
-              r="92"
-              fill="#fff"
-              opacity=".65"/>
-
-
-            <circle
-              cx="465"
-              cy="120"
-              r="63"
-              fill="#d9f4f5"/>
-
-
-            <rect
-              x="62"
-              y="440"
-              width="476"
-              height="120"
-              rx="28"
-              fill="#fff"
-              opacity=".9"/>
-
-
-            <path
-              d="M105 505c80-56 152-64 236-25 58 27 109 30 154 5v75H105z"
-              fill="#0e55a8"
-              opacity=".08"/>
-
-
-            <circle
-              cx="305"
-              cy="210"
-              r="76"
-              fill="#f0c7ae"/>
-
-
-            <path
-              d="M230 210c0-68 31-106 78-106 52 0 82 39 82 108-19-24-43-34-69-35-27-1-55 11-91 33z"
-              fill="#143b5f"/>
-
-
-            <path
-              d="M253 282c28 20 81 20 109 0v69c-31 30-77 30-109 0z"
-              fill="#efb79d"/>
-
-
-            <path
-              d="M194 520c12-124 53-177 111-177h22c61 0 105 58 111 177z"
-              fill="url(#coat)"/>
-
-
-            <path
-              d="M286 349l19 51 20-51"
-              fill="none"
-              stroke="#cce5f2"
-              stroke-width="8"/>
-
-
-            <rect
-              x="292"
-              y="398"
-              width="30"
-              height="90"
-              rx="15"
-              fill="#fff"
-              stroke="#d4e9f4"/>
-
-
-            <circle
-              cx="307"
-              cy="425"
-              r="7"
-              fill="#0e55a8"/>
-
-            <circle
-              cx="307"
-              cy="451"
-              r="7"
-              fill="#109c9f"/>
-
-
-            <path
-              d="M470 420c-15-52-11-103 15-150"
-              fill="none"
-              stroke="#fff"
-              stroke-width="15"
-              stroke-linecap="round"/>
-
-
-            <circle
-              cx="492"
-              cy="255"
-              r="28"
-              fill="#fff"
-              stroke="#d5eaf4"
-              stroke-width="5"/>
-
-
-            <path
-              d="M485 244l8 8 14-17"
-              fill="none"
-              stroke="#109c9f"
-              stroke-width="6"
-              stroke-linecap="round"/>
-
-          </svg>
+          <img
+            src="d.jpeg"
+            alt="Dr. Rishik Dental Care"
+          >
 
         </div>
 
@@ -2361,7 +3062,9 @@ footer{
       <div class="doctor-note">
 
         <div class="icon">
+
           <i class="fa-solid fa-user-doctor"></i>
+
         </div>
 
         <div>
@@ -2396,13 +3099,17 @@ footer{
       </h4>
 
       <p>
-        Dr. Rishik Dental Care is committed to providing
-        advanced dental treatments with a focus on patient
-        comfort, hygiene and long-term oral health. Using
-        modern equipment and a caring approach, every
-        patient receives personalized treatment for a
-        healthy and confident smile.
+
+        Dr. Rishik Dental Care is committed
+        to providing advanced dental treatments
+        with a focus on patient comfort, hygiene
+        and long-term oral health. Using modern
+        equipment and a caring approach, every
+        patient receives personalized treatment
+        for a healthy and confident smile.
+
       </p>
+
 
       <div class="point-grid">
 
@@ -2445,13 +3152,14 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      SERVICES
-========================= -->
+======================================================== -->
 
 <section class="services" id="services">
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -2464,8 +3172,8 @@ footer{
       </h2>
 
       <p>
-        Modern technology, quality treatment and
-        compassionate care for every patient.
+        Modern technology, quality treatment
+        and compassionate care for every patient.
       </p>
 
     </div>
@@ -2476,7 +3184,8 @@ footer{
 
       <article
         class="service reveal"
-        data-magnetic>
+        data-magnetic
+      >
 
         <div class="service-icon">
           <i class="fa-solid fa-tooth"></i>
@@ -2488,8 +3197,8 @@ footer{
 
         <p>
           Advanced painless root canal treatment
-          to save infected teeth and restore their
-          natural function.
+          to save infected teeth and restore
+          their natural function.
         </p>
 
       </article>
@@ -2497,7 +3206,8 @@ footer{
 
       <article
         class="service reveal"
-        data-magnetic>
+        data-magnetic
+      >
 
         <div class="service-icon">
           <i class="fa-solid fa-sparkles"></i>
@@ -2518,7 +3228,8 @@ footer{
 
       <article
         class="service reveal"
-        data-magnetic>
+        data-magnetic
+      >
 
         <div class="service-icon">
           <i class="fa-solid fa-face-smile"></i>
@@ -2530,7 +3241,8 @@ footer{
 
         <p>
           Customized cosmetic dental treatments
-          to improve your smile and facial appearance.
+          to improve your smile and facial
+          appearance.
         </p>
 
       </article>
@@ -2538,7 +3250,8 @@ footer{
 
       <article
         class="service reveal"
-        data-magnetic>
+        data-magnetic
+      >
 
         <div class="service-icon">
           <i class="fa-solid fa-teeth"></i>
@@ -2558,7 +3271,8 @@ footer{
 
       <article
         class="service reveal"
-        data-magnetic>
+        data-magnetic
+      >
 
         <div class="service-icon">
           <i class="fa-solid fa-shield-heart"></i>
@@ -2578,7 +3292,8 @@ footer{
 
       <article
         class="service reveal"
-        data-magnetic>
+        data-magnetic
+      >
 
         <div class="service-icon">
           <i class="fa-solid fa-syringe"></i>
@@ -2595,6 +3310,7 @@ footer{
 
       </article>
 
+
     </div>
 
   </div>
@@ -2602,13 +3318,14 @@ footer{
 </section>
 
 
-<!-- =========================
-     WHY
-========================= -->
+<!-- =======================================================
+     WHY CHOOSE US
+======================================================== -->
 
 <section class="why">
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -2621,9 +3338,9 @@ footer{
       </h2>
 
       <p>
-        We provide quality dental care with modern
-        technology and personalized attention for
-        every patient.
+        We provide quality dental care with
+        modern technology and personalized
+        attention for every patient.
       </p>
 
     </div>
@@ -2632,7 +3349,10 @@ footer{
     <div class="why-grid">
 
 
-      <article class="why-card reveal">
+      <article
+        class="why-card reveal"
+        data-magnetic
+      >
 
         <div class="why-num">
           01
@@ -2645,13 +3365,17 @@ footer{
         </h3>
 
         <p>
-          Professional consultation and accurate diagnosis.
+          Professional consultation and
+          accurate diagnosis.
         </p>
 
       </article>
 
 
-      <article class="why-card reveal">
+      <article
+        class="why-card reveal"
+        data-magnetic
+      >
 
         <div class="why-num">
           02
@@ -2664,13 +3388,17 @@ footer{
         </h3>
 
         <p>
-          Advanced dental technology for better treatment.
+          Advanced dental technology for
+          better treatment.
         </p>
 
       </article>
 
 
-      <article class="why-card reveal">
+      <article
+        class="why-card reveal"
+        data-magnetic
+      >
 
         <div class="why-num">
           03
@@ -2683,13 +3411,17 @@ footer{
         </h3>
 
         <p>
-          Friendly environment with painless procedures.
+          Friendly environment with
+          painless procedures.
         </p>
 
       </article>
 
 
-      <article class="why-card reveal">
+      <article
+        class="why-card reveal"
+        data-magnetic
+      >
 
         <div class="why-num">
           04
@@ -2702,13 +3434,17 @@ footer{
         </h3>
 
         <p>
-          Highly rated clinic with excellent patient satisfaction.
+          Highly rated clinic with excellent
+          patient satisfaction.
         </p>
 
       </article>
 
 
-      <article class="why-card reveal">
+      <article
+        class="why-card reveal"
+        data-magnetic
+      >
 
         <div class="why-num">
           05
@@ -2721,13 +3457,17 @@ footer{
         </h3>
 
         <p>
-          Quality treatment at transparent pricing.
+          Quality treatment at transparent
+          pricing.
         </p>
 
       </article>
 
 
-      <article class="why-card reveal">
+      <article
+        class="why-card reveal"
+        data-magnetic
+      >
 
         <div class="why-num">
           06
@@ -2740,10 +3480,12 @@ footer{
         </h3>
 
         <p>
-          Minimal waiting time and easy appointments.
+          Minimal waiting time and easy
+          appointments.
         </p>
 
       </article>
+
 
     </div>
 
@@ -2752,13 +3494,19 @@ footer{
 </section>
 
 
-<!-- =========================
-     GALLERY
-========================= -->
+<!-- =======================================================
+     CLINIC GALLERY
+     c1.jpeg - c6.jpeg
+     MANUAL ONE IMAGE SLIDER
+======================================================== -->
 
-<section class="gallery" id="gallery">
+<section
+  class="gallery"
+  id="gallery"
+>
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -2771,362 +3519,214 @@ footer{
       </h2>
 
       <p>
-        Take a look at a modern clinic environment
-        designed for hygiene, comfort and quality
-        dental care.
+        Take a look at our clinic environment
+        designed for hygiene, comfort and
+        quality dental care.
       </p>
 
     </div>
 
 
-    <div class="gallery-grid">
+    <div
+      class="gallery-slider reveal scale"
+      id="gallerySlider"
+    >
 
 
-      <div class="gallery-card big reveal">
+      <div
+        class="gallery-track"
+        id="galleryTrack"
+      >
 
-        <svg
-          viewBox="0 0 700 700"
-          preserveAspectRatio="xMidYMid slice">
 
-          <rect
-            width="700"
-            height="700"
-            fill="#e6f5f8"/>
+        <!-- IMAGE 1 -->
 
-          <rect
-            x="55"
-            y="80"
-            width="590"
-            height="460"
-            rx="25"
-            fill="#fff"/>
+        <div
+          class="gallery-slide active"
+        >
 
-          <rect
-            x="85"
-            y="110"
-            width="190"
-            height="150"
-            rx="14"
-            fill="#d8f1f4"/>
+          <img
+            src="c1.jpeg"
+            alt="Dr. Rishik Dental Care Gallery 1"
+          >
 
-          <rect
-            x="295"
-            y="110"
-            width="310"
-            height="30"
-            rx="15"
-            fill="#0e55a8"
-            opacity=".12"/>
+          <div class="gallery-caption">
 
-          <rect
-            x="295"
-            y="165"
-            width="240"
-            height="22"
-            rx="11"
-            fill="#109c9f"
-            opacity=".18"/>
+            <strong>
+              Our Clinic
+            </strong>
 
-          <rect
-            x="85"
-            y="295"
-            width="520"
-            height="210"
-            rx="18"
-            fill="#f4f9fc"/>
+            <span>
+              Modern dental care environment
+            </span>
 
-          <rect
-            x="110"
-            y="325"
-            width="190"
-            height="120"
-            rx="12"
-            fill="#0e55a8"
-            opacity=".12"/>
-
-          <circle
-            cx="470"
-            cy="370"
-            r="55"
-            fill="#109c9f"
-            opacity=".12"/>
-
-          <path
-            d="M430 370c23-37 66-37 82 0-16 35-59 35-82 0z"
-            fill="#fff"
-            stroke="#109c9f"
-            stroke-width="6"/>
-
-          <rect
-            x="140"
-            y="575"
-            width="420"
-            height="24"
-            rx="12"
-            fill="#0e55a8"
-            opacity=".15"/>
-
-        </svg>
-
-        <div class="gallery-label">
-
-          <strong>
-            Reception Area
-          </strong>
-
-          <span>
-            Welcoming patient experience
-          </span>
+          </div>
 
         </div>
+
+
+        <!-- IMAGE 2 -->
+
+        <div class="gallery-slide">
+
+          <img
+            src="c2.jpeg"
+            alt="Dr. Rishik Dental Care Gallery 2"
+          >
+
+          <div class="gallery-caption">
+
+            <strong>
+              Treatment Space
+            </strong>
+
+            <span>
+              Comfortable patient-focused care
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- IMAGE 3 -->
+
+        <div class="gallery-slide">
+
+          <img
+            src="c3.jpeg"
+            alt="Dr. Rishik Dental Care Gallery 3"
+          >
+
+          <div class="gallery-caption">
+
+            <strong>
+              Dental Care
+            </strong>
+
+            <span>
+              Modern treatment environment
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- IMAGE 4 -->
+
+        <div class="gallery-slide">
+
+          <img
+            src="c4.jpeg"
+            alt="Dr. Rishik Dental Care Gallery 4"
+          >
+
+          <div class="gallery-caption">
+
+            <strong>
+              Patient Comfort
+            </strong>
+
+            <span>
+              Designed around your comfort
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- IMAGE 5 -->
+
+        <div class="gallery-slide">
+
+          <img
+            src="c5.jpeg"
+            alt="Dr. Rishik Dental Care Gallery 5"
+          >
+
+          <div class="gallery-caption">
+
+            <strong>
+              Modern Dentistry
+            </strong>
+
+            <span>
+              Technology supporting better care
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- IMAGE 6 -->
+
+        <div class="gallery-slide">
+
+          <img
+            src="c6.jpeg"
+            alt="Dr. Rishik Dental Care Gallery 6"
+          >
+
+          <div class="gallery-caption">
+
+            <strong>
+              Dr. Rishik Dental Care
+            </strong>
+
+            <span>
+              Trusted dental care in Nagaur
+            </span>
+
+          </div>
+
+        </div>
+
 
       </div>
 
 
-      <div class="gallery-card reveal">
+      <!-- MANUAL PREVIOUS -->
 
-        <svg
-          viewBox="0 0 700 500"
-          preserveAspectRatio="xMidYMid slice">
+      <button
+        class="gallery-arrow prev magnetic"
+        id="galleryPrev"
+        aria-label="Previous gallery image"
+        data-magnetic
+      >
 
-          <rect
-            width="700"
-            height="500"
-            fill="#edf8fb"/>
+        <i class="fa-solid fa-arrow-left"></i>
 
-          <rect
-            x="55"
-            y="55"
-            width="590"
-            height="330"
-            rx="28"
-            fill="#fff"/>
+      </button>
 
-          <path
-            d="M120 360c35-170 425-170 460 0"
-            fill="#e6edf2"/>
 
-          <path
-            d="M155 335c55-105 335-105 390 0"
-            fill="#fff"
-            stroke="#d0e4ee"
-            stroke-width="5"/>
+      <!-- MANUAL NEXT -->
 
-          <rect
-            x="245"
-            y="130"
-            width="210"
-            height="40"
-            rx="20"
-            fill="#0e55a8"
-            opacity=".13"/>
+      <button
+        class="gallery-arrow next magnetic"
+        id="galleryNext"
+        aria-label="Next gallery image"
+        data-magnetic
+      >
 
-          <circle
-            cx="350"
-            cy="270"
-            r="58"
-            fill="#e9f7fb"
-            stroke="#109c9f"
-            stroke-width="7"/>
+        <i class="fa-solid fa-arrow-right"></i>
 
-          <path
-            d="M350 225v90M305 270h90"
-            stroke="#109c9f"
-            stroke-width="10"
-            stroke-linecap="round"/>
+      </button>
 
-        </svg>
 
-        <div class="gallery-label">
+      <!-- COUNTER -->
 
-          <strong>
-            Treatment Room
-          </strong>
+      <div
+        class="gallery-counter"
+        id="galleryCounter"
+      >
 
-          <span>
-            Modern dental equipment
-          </span>
-
-        </div>
+        01 / 06
 
       </div>
 
-
-      <div class="gallery-card reveal">
-
-        <svg
-          viewBox="0 0 700 500"
-          preserveAspectRatio="xMidYMid slice">
-
-          <rect
-            width="700"
-            height="500"
-            fill="#e8f6fb"/>
-
-          <rect
-            x="85"
-            y="95"
-            width="530"
-            height="285"
-            rx="24"
-            fill="#fff"/>
-
-          <rect
-            x="125"
-            y="135"
-            width="180"
-            height="190"
-            rx="16"
-            fill="#dff2f7"/>
-
-          <rect
-            x="335"
-            y="135"
-            width="235"
-            height="25"
-            rx="12"
-            fill="#0e55a8"
-            opacity=".15"/>
-
-          <rect
-            x="335"
-            y="180"
-            width="180"
-            height="18"
-            rx="9"
-            fill="#109c9f"
-            opacity=".18"/>
-
-          <rect
-            x="335"
-            y="220"
-            width="205"
-            height="18"
-            rx="9"
-            fill="#0e55a8"
-            opacity=".1"/>
-
-          <path
-            d="M165 260c25-60 80-60 105 0-25 42-80 42-105 0z"
-            fill="#fff"
-            stroke="#0e55a8"
-            stroke-width="6"/>
-
-        </svg>
-
-        <div class="gallery-label">
-
-          <strong>
-            Clean Environment
-          </strong>
-
-          <span>
-            Hygiene-first surroundings
-          </span>
-
-        </div>
-
-      </div>
-
-
-      <div class="gallery-card wide reveal">
-
-        <svg
-          viewBox="0 0 1000 500"
-          preserveAspectRatio="xMidYMid slice">
-
-          <rect
-            width="1000"
-            height="500"
-            fill="#dff3f7"/>
-
-          <rect
-            x="80"
-            y="75"
-            width="840"
-            height="350"
-            rx="30"
-            fill="#fff"/>
-
-          <rect
-            x="125"
-            y="120"
-            width="330"
-            height="255"
-            rx="20"
-            fill="#eef7fb"/>
-
-          <path
-            d="M190 310c15-120 180-120 200 0"
-            fill="#fff"
-            stroke="#bcdce9"
-            stroke-width="7"/>
-
-          <circle
-            cx="290"
-            cy="210"
-            r="52"
-            fill="#e7f7f7"
-            stroke="#109c9f"
-            stroke-width="8"/>
-
-          <path
-            d="M290 165v90M245 210h90"
-            stroke="#109c9f"
-            stroke-width="9"
-            stroke-linecap="round"/>
-
-          <rect
-            x="510"
-            y="135"
-            width="350"
-            height="35"
-            rx="17"
-            fill="#0e55a8"
-            opacity=".13"/>
-
-          <rect
-            x="510"
-            y="195"
-            width="285"
-            height="20"
-            rx="10"
-            fill="#109c9f"
-            opacity=".18"/>
-
-          <rect
-            x="510"
-            y="235"
-            width="310"
-            height="20"
-            rx="10"
-            fill="#0e55a8"
-            opacity=".1"/>
-
-          <rect
-            x="510"
-            y="295"
-            width="220"
-            height="55"
-            rx="27"
-            fill="#0e55a8"
-            opacity=".1"/>
-
-        </svg>
-
-        <div class="gallery-label">
-
-          <strong>
-            Advanced Care
-          </strong>
-
-          <span>
-            Technology supporting comfortable treatment
-          </span>
-
-        </div>
-
-      </div>
 
     </div>
 
@@ -3135,13 +3735,17 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      REVIEWS
-========================= -->
+======================================================== -->
 
-<section class="reviews" id="reviews">
+<section
+  class="reviews"
+  id="reviews"
+>
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -3159,7 +3763,10 @@ footer{
     <div class="review-grid">
 
 
-      <article class="review reveal">
+      <article
+        class="review reveal"
+        data-magnetic
+      >
 
         <div class="quote">
           “
@@ -3170,9 +3777,12 @@ footer{
         </div>
 
         <p>
-          “Excellent treatment with a very caring approach.
-          The clinic is clean, modern and the doctor explained
-          every procedure clearly.”
+
+          “Excellent treatment with a very
+          caring approach. The clinic is clean,
+          modern and the doctor explained every
+          procedure clearly.”
+
         </p>
 
         <div class="reviewer">
@@ -3198,7 +3808,10 @@ footer{
       </article>
 
 
-      <article class="review reveal">
+      <article
+        class="review reveal"
+        data-magnetic
+      >
 
         <div class="quote">
           “
@@ -3209,9 +3822,11 @@ footer{
         </div>
 
         <p>
-          “Very satisfied with my Root Canal treatment.
-          Friendly staff and painless experience.
-          Highly recommended.”
+
+          “Very satisfied with my Root Canal
+          treatment. Friendly staff and painless
+          experience. Highly recommended.”
+
         </p>
 
         <div class="reviewer">
@@ -3237,7 +3852,10 @@ footer{
       </article>
 
 
-      <article class="review reveal">
+      <article
+        class="review reveal"
+        data-magnetic
+      >
 
         <div class="quote">
           “
@@ -3248,8 +3866,11 @@ footer{
         </div>
 
         <p>
-          “Professional treatment, hygienic environment
-          and modern equipment. Best dental clinic in Nagaur.”
+
+          “Professional treatment, hygienic
+          environment and modern equipment.
+          Best dental clinic in Nagaur.”
+
         </p>
 
         <div class="reviewer">
@@ -3274,6 +3895,7 @@ footer{
 
       </article>
 
+
     </div>
 
   </div>
@@ -3281,13 +3903,14 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      FAQ
-========================= -->
+======================================================== -->
 
 <section class="faq">
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -3320,9 +3943,10 @@ footer{
           <div>
 
             <p>
-              Monday to Sunday
-              <br>
+
+              Monday to Sunday<br>
               10:00 AM - 7:00 PM
+
             </p>
 
           </div>
@@ -3347,8 +3971,10 @@ footer{
           <div>
 
             <p>
+
               Yes, we provide advanced Root Canal
               Treatment using modern equipment.
+
             </p>
 
           </div>
@@ -3373,8 +3999,11 @@ footer{
           <div>
 
             <p>
-              Appointments are recommended, however
-              walk-in patients are also welcome.
+
+              Appointments are recommended,
+              however walk-in patients are also
+              welcome.
+
             </p>
 
           </div>
@@ -3383,6 +4012,37 @@ footer{
 
       </div>
 
+
+      <div class="faq-item reveal">
+
+        <button class="faq-q">
+
+          What dental treatments do you provide?
+
+          <i class="fa-solid fa-plus"></i>
+
+        </button>
+
+        <div class="faq-a">
+
+          <div>
+
+            <p>
+
+              We provide Root Canal Treatment,
+              Teeth Whitening, Smile Designing,
+              Dental Filling, Preventive Dentistry
+              and Tooth Extraction.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
     </div>
 
   </div>
@@ -3390,13 +4050,17 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =======================================================
      CONTACT
-========================= -->
+======================================================== -->
 
-<section class="contact" id="contact">
+<section
+  class="contact"
+  id="contact"
+>
 
   <div class="container">
+
 
     <div class="section-head reveal">
 
@@ -3414,7 +4078,9 @@ footer{
     <div class="contact-layout">
 
 
-      <div class="contact-info reveal left">
+      <div
+        class="contact-info reveal left"
+      >
 
         <span
           class="eyebrow"
@@ -3422,15 +4088,18 @@ footer{
             background:rgba(255,255,255,.1);
             border-color:rgba(255,255,255,.15);
             color:#fff
-          ">
+          "
+        >
 
           Dr. Rishik Dental Care
 
         </span>
 
+
         <h2>
           Let’s care for your smile.
         </h2>
+
 
         <p>
           Reach us directly for appointments,
@@ -3451,7 +4120,8 @@ footer{
             </strong>
 
             <span>
-              Shiv Colony, Nagaur - 341001, Rajasthan
+              Shiv Colony, Nagaur - 341001,
+              Rajasthan
             </span>
 
           </div>
@@ -3514,7 +4184,8 @@ footer{
             </strong>
 
             <span>
-              Monday - Sunday · 10:00 AM - 7:00 PM
+              Monday - Sunday ·
+              10:00 AM - 7:00 PM
             </span>
 
           </div>
@@ -3524,28 +4195,34 @@ footer{
       </div>
 
 
-      <div class="contact-visual reveal right">
+      <div
+        class="contact-visual reveal right"
+      >
 
         <svg
           viewBox="0 0 700 520"
           role="img"
-          aria-label="Stylized clinic location illustration">
+          aria-label="Stylized clinic location illustration"
+        >
 
           <rect
             width="700"
             height="520"
-            fill="#edf9fb"/>
+            fill="#edf9fb"
+          />
 
           <path
             d="M0 400c150-80 260-70 370 0s210 80 330-5v125H0z"
-            fill="#d7eef5"/>
+            fill="#d7eef5"
+          />
 
           <path
             d="M80 360c80-70 170-100 270-95 115 6 190 55 270 115"
             fill="none"
             stroke="#b9dce9"
             stroke-width="20"
-            stroke-linecap="round"/>
+            stroke-linecap="round"
+          />
 
           <path
             d="M95 340c110-90 270-120 470-15"
@@ -3553,13 +4230,15 @@ footer{
             stroke="#fff"
             stroke-width="8"
             stroke-linecap="round"
-            stroke-dasharray="12 16"/>
+            stroke-dasharray="12 16"
+          />
 
           <path
             d="M210 350V190l140-95 140 95v160z"
             fill="#fff"
             stroke="#d0e7f1"
-            stroke-width="7"/>
+            stroke-width="7"
+          />
 
           <path
             d="M190 195l160-120 160 120"
@@ -3567,7 +4246,8 @@ footer{
             stroke="#0e55a8"
             stroke-width="18"
             stroke-linecap="round"
-            stroke-linejoin="round"/>
+            stroke-linejoin="round"
+          />
 
           <rect
             x="320"
@@ -3577,7 +4257,8 @@ footer{
             rx="8"
             fill="#e6f7f8"
             stroke="#109c9f"
-            stroke-width="7"/>
+            stroke-width="7"
+          />
 
           <rect
             x="255"
@@ -3585,7 +4266,8 @@ footer{
             width="45"
             height="45"
             rx="8"
-            fill="#dff0fb"/>
+            fill="#dff0fb"
+          />
 
           <rect
             x="400"
@@ -3593,19 +4275,22 @@ footer{
             width="45"
             height="45"
             rx="8"
-            fill="#dff0fb"/>
+            fill="#dff0fb"
+          />
 
           <circle
             cx="350"
             cy="90"
             r="32"
-            fill="#0e55a8"/>
+            fill="#0e55a8"
+          />
 
           <path
             d="M350 74v32M334 90h32"
             stroke="#fff"
             stroke-width="7"
-            stroke-linecap="round"/>
+            stroke-linecap="round"
+          />
 
           <circle
             cx="350"
@@ -3614,7 +4299,8 @@ footer{
             fill="none"
             stroke="#0e55a8"
             stroke-width="3"
-            opacity=".2"/>
+            opacity=".2"
+          />
 
           <rect
             x="420"
@@ -3623,7 +4309,8 @@ footer{
             height="58"
             rx="17"
             fill="#fff"
-            stroke="#d8eaf3"/>
+            stroke="#d8eaf3"
+          />
 
           <text
             x="445"
@@ -3631,7 +4318,8 @@ footer{
             font-family="Arial"
             font-size="14"
             fill="#0e55a8"
-            font-weight="700">
+            font-weight="700"
+          >
             SHIV COLONY
           </text>
 
@@ -3640,7 +4328,8 @@ footer{
             y="159"
             font-family="Arial"
             font-size="11"
-            fill="#6a7f94">
+            fill="#6a7f94"
+          >
             NAGAUR · RAJASTHAN
           </text>
 
@@ -3648,46 +4337,56 @@ footer{
 
       </div>
 
+
     </div>
 
   </div>
 
 </section>
 
+
 </main>
 
 
-<!-- =========================
+<!-- =======================================================
      FOOTER
-========================= -->
+======================================================== -->
 
 <footer>
 
   <div class="container">
 
+
     <div class="footer-top">
 
 
-      <div class="footer-brand">
+      <!-- SAME LOGO -->
 
-        <!-- FOOTER LOGO -->
+      <div class="footer-brand">
 
         <a href="#home">
 
           <img
             src="logo.png"
-            alt="Dr. Rishik Dental Care">
+            alt="Dr. Rishik Dental Care logo"
+          >
 
         </a>
 
+
         <p>
-          Healthy Teeth • Healthy Smile • Trusted Dental Care.
-          Advanced, comfortable and patient-focused dental
-          care in Nagaur.
+
+          Healthy Teeth • Healthy Smile •
+          Trusted Dental Care. Advanced,
+          comfortable and patient-focused
+          dental care in Nagaur.
+
         </p>
 
       </div>
 
+
+      <!-- FOOTER LINKS -->
 
       <div class="footer-links">
 
@@ -3717,15 +4416,21 @@ footer{
 
       </div>
 
+
     </div>
 
 
     <div class="copyright">
 
       <span>
-        © <span id="year"></span>
-        Dr. Rishik Dental Care. All Rights Reserved.
+
+        ©
+        <span id="year"></span>
+        Dr. Rishik Dental Care.
+        All Rights Reserved.
+
       </span>
+
 
       <span>
         Shiv Colony, Nagaur, Rajasthan
@@ -3738,212 +4443,587 @@ footer{
 </footer>
 
 
-<!-- =========================
+<!-- =======================================================
      FLOATING CALL
-========================= -->
+     RECOGNIZABLE PHONE ICON
+======================================================== -->
 
 <a
   class="float-btn float-call magnetic"
-  data-magnetic
   href="tel:7014726428"
-  aria-label="Call Dr. Rishik Dental Care">
+  aria-label="Call Dr. Rishik Dental Care"
+  data-magnetic
+>
 
   <i class="fa-solid fa-phone"></i>
 
 </a>
 
 
-<!-- =========================
+<!-- =======================================================
      FLOATING WHATSAPP
-========================= -->
+     RECOGNIZABLE WHATSAPP ICON
+======================================================== -->
 
 <a
   class="float-btn float-wa magnetic"
-  data-magnetic
   href="https://wa.me/917014726428"
   target="_blank"
   rel="noopener"
-  aria-label="WhatsApp Dr. Rishik Dental Care">
+  aria-label="WhatsApp Dr. Rishik Dental Care"
+  data-magnetic
+>
 
   <i class="fa-brands fa-whatsapp"></i>
 
 </a>
 
 
-<!-- SCROLL TOP -->
+<!-- =======================================================
+     SCROLL TOP
+======================================================== -->
 
 <button
   id="scrollTop"
-  aria-label="Scroll to top">
+  aria-label="Scroll to top"
+>
 
   <i class="fa-solid fa-arrow-up"></i>
 
 </button>
 
 
+<!-- =======================================================
+     JAVASCRIPT
+======================================================== -->
+
 <script>
 
 (() => {
 
-  const $ = (s, root=document) =>
-    root.querySelector(s);
 
-  const $$ = (s, root=document) =>
-    [...root.querySelectorAll(s)];
+/* =========================================================
+   SHORT SELECTORS
+========================================================= */
 
+const $ = (selector, root = document) =>
+  root.querySelector(selector);
 
-  /* =========================
-     LOADER
-  ========================= */
-
-  window.addEventListener('load', () => {
-
-    setTimeout(() => {
-
-      $('#loader')?.classList.add('hide');
-
-    }, 350);
-
-  });
+const $$ = (selector, root = document) =>
+  [...root.querySelectorAll(selector)];
 
 
-  /* =========================
-     MOBILE NAVIGATION
-  ========================= */
+/* =========================================================
+   LOADER
+   KEPT
+========================================================= */
 
-  const menuBtn = $('#menuBtn');
-  const nav = $('#nav');
+window.addEventListener("load", () => {
 
-  menuBtn?.addEventListener('click', () => {
+  setTimeout(() => {
 
-    nav.classList.toggle('open');
+    $("#loader")?.classList.add("hide");
 
-    menuBtn.innerHTML =
-      nav.classList.contains('open')
+  }, 350);
+
+});
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+const menuBtn = $("#menuBtn");
+const nav = $("#nav");
+
+menuBtn?.addEventListener("click", () => {
+
+  nav.classList.toggle("open");
+
+  menuBtn.innerHTML =
+    nav.classList.contains("open")
+
       ? '<i class="fa-solid fa-xmark"></i>'
+
       : '<i class="fa-solid fa-bars"></i>';
 
+});
+
+
+$$("#nav a").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    nav.classList.remove("open");
+
+    menuBtn.innerHTML =
+      '<i class="fa-solid fa-bars"></i>';
+
+  });
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealObserver =
+  new IntersectionObserver(
+
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("in");
+
+          revealObserver.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+
+    {
+      threshold:.13,
+      rootMargin:"0px 0px -60px 0px"
+    }
+
+  );
+
+
+$$(".reveal").forEach(element => {
+
+  revealObserver.observe(element);
+
+});
+
+
+/* =========================================================
+   HEADER + ACTIVE NAV + SCROLL TOP
+========================================================= */
+
+const header = $("#header");
+const topBtn = $("#scrollTop");
+
+const sections =
+  $$("main section[id]");
+
+
+const updateScroll = () => {
+
+
+  /* header */
+
+  header.classList.toggle(
+    "scrolled",
+    scrollY > 10
+  );
+
+
+  /* scroll top */
+
+  topBtn.classList.toggle(
+    "show",
+    scrollY > 500
+  );
+
+
+  /* active section */
+
+  let current = "home";
+
+
+  sections.forEach(section => {
+
+    if(
+      scrollY >=
+      section.offsetTop - 170
+    ){
+
+      current = section.id;
+
+    }
+
   });
 
 
-  $$('#nav a').forEach(a => {
+  $$("#nav a").forEach(link => {
 
-    a.addEventListener('click', () => {
+    link.classList.toggle(
 
-      nav.classList.remove('open');
+      "active",
 
-      menuBtn.innerHTML =
-        '<i class="fa-solid fa-bars"></i>';
+      link.getAttribute("href")
+      ===
+      "#" + current
 
+    );
+
+  });
+
+
+};
+
+
+/* scroll event */
+
+addEventListener(
+  "scroll",
+  updateScroll,
+  {passive:true}
+);
+
+updateScroll();
+
+
+/* scroll top */
+
+topBtn.addEventListener(
+  "click",
+  () => {
+
+    scrollTo({
+      top:0,
+      behavior:"smooth"
     });
 
-  });
+  }
+);
 
 
-  /* =========================
-     SCROLL REVEAL
-  ========================= */
+/* =========================================================
+   FAQ ACCORDION
+========================================================= */
 
-  const observer =
-    new IntersectionObserver(
-
-      entries => {
-
-        entries.forEach(entry => {
-
-          if(entry.isIntersecting){
-
-            entry.target.classList.add('in');
-
-            observer.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-
-      {
-        threshold:.13,
-        rootMargin:'0px 0px -60px 0px'
-      }
-
-    );
+$$(".faq-item").forEach(item => {
 
 
-  $$('.reveal').forEach(el => {
-
-    observer.observe(el);
-
-  });
+  const question =
+    $(".faq-q", item);
 
 
-  /* =========================
-     HEADER + ACTIVE NAV
-     + PARALLAX
-  ========================= */
-
-  const header = $('#header');
-  const topBtn = $('#scrollTop');
-
-  const sections =
-    $$('main section[id]');
+  question.addEventListener(
+    "click",
+    () => {
 
 
-  const updateScroll = () => {
-
-    header.classList.toggle(
-      'scrolled',
-      scrollY > 10
-    );
+      const wasOpen =
+        item.classList.contains("open");
 
 
-    topBtn.classList.toggle(
-      'show',
-      scrollY > 500
-    );
+      $$(".faq-item").forEach(
+        other => {
 
+          other.classList.remove(
+            "open"
+          );
 
-    let current = 'home';
-
-
-    sections.forEach(sec => {
-
-      if(
-        scrollY >=
-        sec.offsetTop - 170
-      ){
-
-        current = sec.id;
-
-      }
-
-    });
-
-
-    $$('#nav a').forEach(a => {
-
-      a.classList.toggle(
-
-        'active',
-
-        a.getAttribute('href')
-        === '#' + current
-
+        }
       );
 
+
+      if(!wasOpen){
+
+        item.classList.add("open");
+
+      }
+
+    }
+  );
+
+
+});
+
+
+/* =========================================================
+   MAGNETIC BUTTONS
+========================================================= */
+
+if(
+  matchMedia(
+    "(pointer:fine)"
+  ).matches
+){
+
+
+  $$("[data-magnetic]")
+    .forEach(element => {
+
+
+      element.addEventListener(
+        "mousemove",
+        event => {
+
+
+          const rect =
+            element.getBoundingClientRect();
+
+
+          const x =
+            (
+              event.clientX -
+              (rect.left + rect.width / 2)
+            )
+            /
+            rect.width;
+
+
+          const y =
+            (
+              event.clientY -
+              (rect.top + rect.height / 2)
+            )
+            /
+            rect.height;
+
+
+          element.style.transform =
+            `translate(${x * 9}px,${y * 9}px)`;
+
+
+        }
+      );
+
+
+      element.addEventListener(
+        "mouseleave",
+        () => {
+
+          element.style.transform = "";
+
+        }
+      );
+
+
     });
 
+}
 
-    $$('[data-parallax]').forEach(el => {
+
+/* =========================================================
+   CARD TILT / TACTILE EFFECT
+========================================================= */
+
+if(
+  matchMedia(
+    "(pointer:fine)"
+  ).matches
+){
+
+
+  $$(".service,.why-card,.review")
+    .forEach(card => {
+
+
+      card.addEventListener(
+        "mousemove",
+        event => {
+
+
+          const rect =
+            card.getBoundingClientRect();
+
+
+          const rx =
+            (
+              (event.clientY - rect.top)
+              /
+              rect.height
+              -
+              .5
+            )
+            *
+            -3;
+
+
+          const ry =
+            (
+              (event.clientX - rect.left)
+              /
+              rect.width
+              -
+              .5
+            )
+            *
+            3;
+
+
+          card.style.transform =
+            `translateY(-6px)
+             perspective(700px)
+             rotateX(${rx}deg)
+             rotateY(${ry}deg)`;
+
+
+        }
+      );
+
+
+      card.addEventListener(
+        "mouseleave",
+        () => {
+
+          card.style.transform = "";
+
+        }
+      );
+
+
+    });
+
+}
+
+
+/* =========================================================
+   COUNTER ANIMATION
+========================================================= */
+
+const counters =
+  $$("[data-count]");
+
+
+const countObserver =
+  new IntersectionObserver(
+
+    entries => {
+
+      entries.forEach(entry => {
+
+
+        if(!entry.isIntersecting)
+          return;
+
+
+        const element =
+          entry.target;
+
+
+        const target =
+          parseFloat(
+            element.dataset.count
+          );
+
+
+        const suffix =
+          target >= 10
+            ? "+"
+            : "";
+
+
+        const duration =
+          1100;
+
+
+        const start =
+          performance.now();
+
+
+        const tick =
+          now => {
+
+
+            const progress =
+              Math.min(
+                (now - start) /
+                duration,
+                1
+              );
+
+
+            const eased =
+              1 -
+              Math.pow(
+                1 - progress,
+                3
+              );
+
+
+            element.textContent =
+
+              (
+                target % 1
+
+                  ? (target * eased)
+                      .toFixed(1)
+
+                  : Math.round(
+                      target * eased
+                    )
+              )
+
+              +
+              suffix;
+
+
+            if(progress < 1){
+
+              requestAnimationFrame(
+                tick
+              );
+
+            }
+
+          };
+
+
+        requestAnimationFrame(
+          tick
+        );
+
+
+        countObserver.unobserve(
+          element
+        );
+
+
+      });
+
+    },
+
+    {
+      threshold:.7
+    }
+
+  );
+
+
+counters.forEach(counter => {
+
+  countObserver.observe(counter);
+
+});
+
+
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
+
+const parallaxElements =
+  $$("[data-parallax]");
+
+
+const updateParallax = () => {
+
+
+  parallaxElements.forEach(
+    element => {
+
 
       const speed =
         parseFloat(
-          el.dataset.parallax || .05
+          element.dataset.parallax
+          || ".05"
         );
 
+
       const rect =
-        el.getBoundingClientRect();
+        element.getBoundingClientRect();
 
 
       if(
@@ -3951,295 +5031,185 @@ footer{
         rect.top < innerHeight
       ){
 
-        el.style.transform =
-          `translateY(${
-            (innerHeight/2 -
-            (rect.top + rect.height/2))
-            * speed
-          }px)`;
+
+        const movement =
+          (
+            innerHeight / 2 -
+            (
+              rect.top +
+              rect.height / 2
+            )
+          )
+          *
+          speed;
+
+
+        element.style.transform =
+          `translateY(${movement}px)`;
+
 
       }
 
-    });
-
-  };
-
-
-  addEventListener(
-    'scroll',
-    updateScroll,
-    {passive:true}
+    }
   );
 
-  updateScroll();
+};
 
 
-  /* =========================
-     SCROLL TOP
-  ========================= */
+addEventListener(
+  "scroll",
+  updateParallax,
+  {passive:true}
+);
 
-  topBtn.addEventListener(
-    'click',
-    () => {
 
-      scrollTo({
-        top:0,
-        behavior:'smooth'
-      });
+/* =========================================================
+   GALLERY MANUAL SLIDER
+   c1 - c6
+========================================================= */
+
+const galleryTrack =
+  $("#galleryTrack");
+
+const gallerySlides =
+  $$(".gallery-slide");
+
+const galleryPrev =
+  $("#galleryPrev");
+
+const galleryNext =
+  $("#galleryNext");
+
+const galleryCounter =
+  $("#galleryCounter");
+
+
+let galleryIndex = 0;
+
+
+function showGallery(index){
+
+  if(!gallerySlides.length)
+    return;
+
+
+  galleryIndex =
+    (
+      index +
+      gallerySlides.length
+    )
+    %
+    gallerySlides.length;
+
+
+  galleryTrack.style.transform =
+    `translateX(-${galleryIndex * 100}%)`;
+
+
+  gallerySlides.forEach(
+    (slide, i) => {
+
+      slide.classList.toggle(
+        "active",
+        i === galleryIndex
+      );
 
     }
   );
 
 
-  /* =========================
-     FAQ ACCORDION
-  ========================= */
+  galleryCounter.textContent =
+    `${String(galleryIndex + 1).padStart(2,"0")} / 06`;
 
-  $$('.faq-item').forEach(item => {
+}
 
-    $('.faq-q', item)
-      .addEventListener(
-        'click',
-        () => {
 
-          const open =
-            item.classList.contains('open');
+/* PREVIOUS */
 
+galleryPrev?.addEventListener(
+  "click",
+  () => {
 
-          $$('.faq-item').forEach(x => {
-
-            x.classList.remove('open');
-
-          });
-
-
-          if(!open){
-
-            item.classList.add('open');
-
-          }
-
-        }
-      );
-
-  });
-
-
-  /* =========================
-     MAGNETIC EFFECT
-  ========================= */
-
-  if(
-    matchMedia('(pointer:fine)').matches
-  ){
-
-    $$('[data-magnetic]').forEach(el => {
-
-      el.addEventListener(
-        'mousemove',
-        e => {
-
-          const r =
-            el.getBoundingClientRect();
-
-
-          const x =
-            (
-              e.clientX -
-              (r.left + r.width/2)
-            ) / r.width;
-
-
-          const y =
-            (
-              e.clientY -
-              (r.top + r.height/2)
-            ) / r.height;
-
-
-          el.style.transform =
-            `translate(${x*10}px,${y*10}px)`;
-
-        }
-      );
-
-
-      el.addEventListener(
-        'mouseleave',
-        () => {
-
-          el.style.transform = '';
-
-        }
-      );
-
-    });
-
-  }
-
-
-  /* =========================
-     ANIMATED NUMBERS
-  ========================= */
-
-  const counters =
-    $$('[data-count]');
-
-
-  const countObserver =
-    new IntersectionObserver(
-
-      entries => {
-
-        entries.forEach(entry => {
-
-          if(!entry.isIntersecting)
-            return;
-
-
-          const el =
-            entry.target;
-
-          const target =
-            parseFloat(
-              el.dataset.count
-            );
-
-
-          const suffix =
-            target >= 10 ? '+' : '';
-
-
-          const duration = 1100;
-
-          const start =
-            performance.now();
-
-
-          const tick = now => {
-
-            const p =
-              Math.min(
-                (now-start)/duration,
-                1
-              );
-
-
-            const eased =
-              1-Math.pow(1-p,3);
-
-
-            el.textContent =
-
-              (
-                target % 1
-                ? (target*eased).toFixed(1)
-                : Math.round(target*eased)
-              )
-              + suffix;
-
-
-            if(p<1){
-
-              requestAnimationFrame(tick);
-
-            }
-
-          };
-
-
-          requestAnimationFrame(tick);
-
-          countObserver.unobserve(el);
-
-        });
-
-      },
-
-      {
-        threshold:.7
-      }
-
+    showGallery(
+      galleryIndex - 1
     );
 
+  }
+);
 
-  counters.forEach(c => {
 
-    countObserver.observe(c);
+/* NEXT */
+
+galleryNext?.addEventListener(
+  "click",
+  () => {
+
+    showGallery(
+      galleryIndex + 1
+    );
+
+  }
+);
+
+
+/* INITIAL */
+
+showGallery(0);
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+$("#year").textContent =
+  new Date().getFullYear();
+
+
+/* =========================================================
+   HERO VIDEO SAFETY
+========================================================= */
+
+const heroVideo =
+  $(".hero-video");
+
+
+if(heroVideo){
+
+  heroVideo.play().catch(() => {
+
+    /* browser autoplay policy:
+       muted video will attempt again
+    */
 
   });
 
-
-  /* =========================
-     TACTILE CARD MOTION
-  ========================= */
-
-  if(
-    matchMedia('(pointer:fine)').matches
-  ){
-
-    $$('.service,.why-card,.review,.gallery-card')
-      .forEach(card => {
-
-        card.addEventListener(
-          'mousemove',
-          e => {
-
-            const r =
-              card.getBoundingClientRect();
+}
 
 
-            const rx =
-              (
-                (e.clientY-r.top)
-                / r.height
-                -.5
-              ) * -3;
+/* =========================================================
+   IMAGE LOAD / ERROR HANDLING
+========================================================= */
+
+$$("img").forEach(image => {
 
 
-            const ry =
-              (
-                (e.clientX-r.left)
-                / r.width
-                -.5
-              ) * 3;
+  image.addEventListener(
+    "error",
+    () => {
+
+      image.style.background =
+        "#eaf6ff";
+
+    }
+  );
 
 
-            card.style.transform =
-              `translateY(-6px)
-               perspective(700px)
-               rotateX(${rx}deg)
-               rotateY(${ry}deg)`;
-
-          }
-        );
-
-
-        card.addEventListener(
-          'mouseleave',
-          () => {
-
-            card.style.transform = '';
-
-          }
-        );
-
-      });
-
-  }
-
-
-  /* =========================
-     YEAR
-  ========================= */
-
-  $('#year').textContent =
-    new Date().getFullYear();
+});
 
 
 })();
-
 </script>
+
 
 </body>
 </html>
